@@ -13,7 +13,7 @@ const ProductSchema = new mongoose.Schema({
         type: Integer,
         required: true
     },
-    UserId: {
+    ProductId: {
         type: ObjectId,
         ref: 'User'
     },
