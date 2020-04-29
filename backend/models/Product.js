@@ -15,7 +15,7 @@ const ProductSchema = new mongoose.Schema({
     },
     ProductId: {
         type: ObjectId,
-        ref: 'User'
+        ref: 'Product'
     },
     category: [ObjectId],
     subCategory: [ObjectId]
@@ -23,6 +23,6 @@ const ProductSchema = new mongoose.Schema({
     timestamps: true
 });
 
-const Product = mongoose.model('Peoduct', ProductSchema);
+const Product = mongoose.model('Product', ProductSchema);
 
 module.exports = Product;
