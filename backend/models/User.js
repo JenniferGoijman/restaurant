@@ -1,17 +1,21 @@
 const mongoose = require('mongoose');
 const ObjectId = mongoose.Schema.Types.ObjectId;
 const UserSchema = new mongoose.Schema({
-    username: String,    
+    username: String,
     password: {
         type: String,
         required: true
     },
     role: String,
-    tokens: [String]    
+    tokens: [String],
+    UserId: {
+        type: ObjectId,
+        ref: 'User'
+    },
 }, {
     timestamps: true
 });
-UserSchema.methods.toJSON = function (params) {
+UserSchema.methods.toJSON = function(params) {
     const user = this._doc;
     delete user.tokens;
     delete user.password;
@@ -19,4 +23,4 @@ UserSchema.methods.toJSON = function (params) {
     return user;
 }
 const User = mongoose.model('User', UserSchema);
-module.exports= User;
+module.exports = User;
