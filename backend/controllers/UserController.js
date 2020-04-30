@@ -24,17 +24,17 @@ const UserController = {
     async login(req, res) {
         try {
             const user = await UserModel.findOne({
-                email: req.body.email
+                username: req.body.username
             });
             if (!user) {
                 return res.status(400).send({
-                    message: 'Email o contraseña incorrectos'
+                    message: 'Usuario o contraseña incorrectos'
                 })
             }
             const isMatch = bcrypt.compare(req.body.password, user.password);
             if (!isMatch) {
                 return res.status(400).send({
-                    message: 'Email o contraseña incorrectos'
+                    message: 'Usuario o contraseña incorrectos'
                 })
             }
             const token = jwt.sign({
