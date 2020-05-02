@@ -5,6 +5,7 @@ const {
     jwt_auth_secret
 } = require('../config/keys');
 const UserController = {
+
     async register(req, res) {
         try {
             req.body.password = await bcrypt.hash(req.body.password, 9)
@@ -14,7 +15,6 @@ const UserController = {
                 message: 'Usuario creado con éxito'
             })
         } catch (error) {
-            console.error(error)
             res.status(500).send({
                 message: 'Hubo un problema al intentar registrar al usuario',
                 error
