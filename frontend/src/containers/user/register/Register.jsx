@@ -1,9 +1,9 @@
 import React from 'react'
-import {Card, Form, Input, Row, Col, Button, Typography, notification } from 'antd';
+import { Card, Form, Input, Row, Col, Button, Typography, notification } from 'antd';
 
 import './Register.scss'
 
-import {register} from '../../../redux/actions/users'
+import { register } from '../../../redux/actions/users'
 
 
 const Register = props => {

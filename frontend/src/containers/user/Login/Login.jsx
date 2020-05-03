@@ -8,7 +8,6 @@ const tailLayout = { wrapperCol: { offset: 8, span: 16 } };
 
 const Login = props => {
     const onFinish = values => { 
-        console.log('Success:', values);
         const user = values;
         login(user)
         .then(res => {

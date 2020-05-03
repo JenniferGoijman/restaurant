@@ -24,6 +24,12 @@ const Header = () => {
                                 Register
                             </NavLink>
                         </Menu.Item>
+                        <Menu.Item  >
+                            <UserOutlined />  
+                            <NavLink to='/admin-products' exact>
+                                Admin Products
+                            </NavLink>
+                        </Menu.Item>
                     </Menu>
                 </Space>
                 </Col>
