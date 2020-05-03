@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Card, Form, Input, Row, Col, Button, Typography, notification } from 'antd';
-import { insert } from '../../redux/actions/products';
+import { insert as insertProduct } from '../../redux/actions/products';
+import { insert as insertCategory } from '../../redux/actions/categories';
 import ModalCategory from './Modal-Category.jsx';
 //import { category } from '../../redux/actions/categories';
 
@@ -11,7 +12,7 @@ const AdminProducts = props => {
     const { Title } = Typography;
     const onFinish = values => {
         const product = values.product;
-        insert(product)
+        insertProduct(product)
         .then(res => {
             notification.success({ message: 'Producto', description: 'Producto cargado con éxito', duration:2000})
         })
@@ -23,6 +24,14 @@ const AdminProducts = props => {
     const [visible, setVisible] = useState(false);
     const onCreate = values => {
         console.log('Received values of form: ', values);
+        const category = values;
+        insertCategory(category)
+        .then(res => {
+            notification.success({ message: 'Categoría', description: 'Categoría cargada con éxito', duration:2000})
+        })
+        .catch(()=>{
+            notification.error({ message: 'Categoría', description: 'Hubo un problema al intentar crear la categoría', duration:2000})
+        })
         setVisible(false);
       };
 
