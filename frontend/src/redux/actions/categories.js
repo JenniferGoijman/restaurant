@@ -6,8 +6,8 @@ export const getAllCategories = async() => {
     try {
         const res = await axios.get(API_URL + 'categories');
         store.dispatch({
-            type: 'GET_ALL_PRODUCTS',
-            payload: res.data.categories
+            type: 'GET_ALL_CATEGORIES',
+            payload: res.data
         })
 
         return res;

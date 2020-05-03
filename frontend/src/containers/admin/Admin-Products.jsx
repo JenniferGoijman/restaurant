@@ -1,14 +1,15 @@
-import React, { useState } from 'react'
-import { Card, Form, Input, Row, Col, Button, Typography, notification } from 'antd';
-import { insert as insertProduct } from '../../redux/actions/products';
-import { insert as insertCategory } from '../../redux/actions/categories';
+import React, { useState, useEffect } from 'react'
+import { Card, Form, Input, Row, Col, Button, Typography, notification, Select } from 'antd';
+import { connect } from 'react-redux';
 import ModalCategory from './Modal-Category.jsx';
-//import { category } from '../../redux/actions/categories';
+import { insert as insertProduct } from '../../redux/actions/products';
+import { getAllCategories, insert as insertCategory } from '../../redux/actions/categories';
 
 const layout = { labelCol: {span: 8 }, wrapperCol: { span: 16, } };
 const validateMessages = { required: '${label} es requerido!' };
 
-const AdminProducts = props => {
+const AdminProducts = ({categories}) => {
+    //Insertar Producto
     const { Title } = Typography;
     const onFinish = values => {
         const product = values.product;
@@ -17,10 +18,11 @@ const AdminProducts = props => {
             notification.success({ message: 'Producto', description: 'Producto cargado con éxito', duration:2000})
         })
         .catch(()=>{
-            notification.error({ message: 'Producto', description: 'Hubo un problema al intentar crear el producto', duration:2000})
+            notification.error({ message: 'Producto', description: 'Hubo un problema al intentar crear el producto', 
+            duration:2000})
         })
       };
-      
+    //Insertar Categoria  
     const [visible, setVisible] = useState(false);
     const onCreate = values => {
         console.log('Received values of form: ', values);
@@ -34,6 +36,13 @@ const AdminProducts = props => {
         })
         setVisible(false);
       };
+    //Mostrar categorias en select
+    const { Option } = Select;
+    function onChange(value) {console.log(`selected ${value}`);}
+    function onBlur() {console.log('blur');}
+    function onFocus() {console.log('focus');}
+    function onSearch(val) {console.log('search:', val);}
+    useEffect(() => { getAllCategories(); console.log("post getAllCategories")}, []);
 
     return (
         <Row justify="center">
@@ -57,9 +66,15 @@ const AdminProducts = props => {
                             name={['product', 'price']} label="Precio" rules={[{ required: true }]}>
                             <Input />
                         </Form.Item>
-                        <Form.Item 
-                            name={['product', 'category']} label="Categoría" rules={[{ required: false }]}>
-                            <Input /> <Button htmlType="button" style={{ margin: '0 8px' }} 
+                        <Form.Item name={['product', 'category']} label="Categoría" rules={[{ required: false }]}>
+  
+                            <Select showSearch style={{ width: 200 }} placeholder="Seleccione una categoria" optionFilterProp="children"
+                                onChange={onChange} onFocus={onFocus} onBlur={onBlur} onSearch={onSearch} 
+                                filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
+                                {categories?.map(category=><Option value={category._id}>{category.name}</Option>)}
+                            </Select>
+                                
+                            <Button htmlType="button" style={{ margin: '0 8px' }} 
                                 onClick={() => { setVisible(true); }}> Nueva Categoría </Button>
                         </Form.Item>
                         <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
@@ -74,5 +89,5 @@ const AdminProducts = props => {
         </Row>
     )
 }
-
-export default AdminProducts
+const mapStateToProps = ({category}) => ({categories:category.categories});
+export default connect(mapStateToProps) (AdminProducts);
