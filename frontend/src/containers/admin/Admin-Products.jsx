@@ -9,10 +9,10 @@ const validateMessages = { required: '${label} es requerido!' };
 const AdminProducts = props => {
     const { Title } = Typography;
     const onFinish = values => {
-        const product = values;
+        const product = values.product;
         insert(product)
         .then(res => {
-            notification.success({ message: 'Producto', description: res.data.message, duration:2000})
+            notification.success({ message: 'Producto', description: 'Producto cargado con éxito', duration:2000})
         })
         .catch(()=>{
             notification.error({ message: 'Producto', description: 'Hubo un problema al intentar crear el producto', duration:2000})

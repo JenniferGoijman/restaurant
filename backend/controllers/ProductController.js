@@ -17,7 +17,9 @@ const ProductController = {
             product,
             message: 'Producto creado con éxito'
         }))
-        .catch(error => { res.status(500).send(error)})
+        .catch(error => { 
+            console.error(error); 
+            res.status(500).send(error)})
     },
 //     update(req, res) {
 //         Product.findByIdAndUpdate(req.params.product_id, {
