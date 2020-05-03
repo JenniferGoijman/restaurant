@@ -1,7 +1,8 @@
-import React from 'react'
-// import './Login.scss'
+import React, { useState } from 'react'
 import { Card, Form, Input, Row, Col, Button, Typography, notification } from 'antd';
 import { insert } from '../../redux/actions/products';
+import ModalCategory from './Modal-Category.jsx';
+//import { category } from '../../redux/actions/categories';
 
 const layout = { labelCol: {span: 8 }, wrapperCol: { span: 16, } };
 const validateMessages = { required: '${label} es requerido!' };
@@ -17,6 +18,12 @@ const AdminProducts = props => {
         .catch(()=>{
             notification.error({ message: 'Producto', description: 'Hubo un problema al intentar crear el producto', duration:2000})
         })
+      };
+      
+    const [visible, setVisible] = useState(false);
+    const onCreate = values => {
+        console.log('Received values of form: ', values);
+        setVisible(false);
       };
 
     return (
@@ -41,12 +48,18 @@ const AdminProducts = props => {
                             name={['product', 'price']} label="Precio" rules={[{ required: true }]}>
                             <Input />
                         </Form.Item>
+                        <Form.Item 
+                            name={['product', 'category']} label="Categoría" rules={[{ required: false }]}>
+                            <Input /> <Button htmlType="button" style={{ margin: '0 8px' }} 
+                                onClick={() => { setVisible(true); }}> Nueva Categoría </Button>
+                        </Form.Item>
                         <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
                             <Button type="primary" htmlType="submit">
                             Aceptar
                             </Button>
                         </Form.Item>
                     </Form>
+                    <ModalCategory visible={visible} onCreate={onCreate} onCancel={() => { setVisible(false); }} />
                 </Card>
             </Col>
         </Row>
