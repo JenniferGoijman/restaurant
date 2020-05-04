@@ -15,3 +15,16 @@ export const login = async(user) => {
     localStorage.setItem('authToken', res.data.token);
     return res;
 }
+
+export const logout = async() => {
+    const res = await axios.get(API_URL + 'users/logout', {
+        headers: {
+            Authorization: localStorage.getItem('authToken')
+        }
+    })
+    localStorage.removeItem('authToken');
+    store.dispatch({
+        type: 'LOGOUT'
+    })
+    return res;
+}
