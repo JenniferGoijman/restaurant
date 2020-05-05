@@ -1,8 +1,21 @@
 import React from 'react'
-import {Form, Input, Modal} from 'antd';
+import {Form, Input, Modal, notification} from 'antd';
+import { insert as insertCategory } from '../../redux/actions/categories';
 
-const ModalCategory = ({visible, onCreate, onCancel}) => {
+const ModalCategory = ({visible, setVisible, onCancel}) => {
     const [form] = Form.useForm();
+    const onCreate = values => {
+        console.log('Received values of form: ', values);
+        const category = values;
+        insertCategory(category)
+        .then(res => {
+            notification.success({ message: 'Categoría', description: 'Categoría cargada con éxito', duration:2000})
+        })
+        .catch(()=>{
+            notification.error({ message: 'Categoría', description: 'Hubo un problema al intentar crear la categoría', duration:2000})
+        })
+        setVisible(false);
+      };
     return (
         <Modal
             visible={visible}

@@ -4,8 +4,8 @@ import './App.scss';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 //IMPORTS COMPONENTS & CONTAINERS
-import Nav from './components/header/header'
-import Login from './containers/user/Login/Login';
+import Nav from './components/header/Header';
+import Login from './containers/user/login/Login';
 import Register from './containers/user/register/Register';
 import AdminProducts from './containers/admin/Admin-Products';
 import Home from './containers/home/home'
