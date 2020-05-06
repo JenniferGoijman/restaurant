@@ -5,7 +5,6 @@ import store from '../store';
 export const getAllProducts = async() => {
     try {
         const res = await axios.get(API_URL + 'products');
-        console.log(res.data);
         store.dispatch({
             type: 'GET_ALL_PRODUCTS',
             payload: res.data
