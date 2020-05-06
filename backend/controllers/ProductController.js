@@ -3,6 +3,7 @@ const Product = require('../models/Product');
 const ProductController = {
     getAll(req, res) {
         Product.find()
+            .populate('category')
             .then(async products => { res.send(products); })
             .catch(error => {
                 console.error(error)

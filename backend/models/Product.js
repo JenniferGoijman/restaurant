@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const Decimal = mongoose.Schema.Types.Decimal128;
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const ProductSchema = new mongoose.Schema({
@@ -12,15 +11,13 @@ const ProductSchema = new mongoose.Schema({
         required: true
     },
     price: {
-        type: Decimal,
+        type: Number,
         required: true
     },
-    ProductId: {
+    category: {
         type: ObjectId,
-        ref: 'Product'
+        ref: 'Category'
     },
-    category: [ObjectId],
-    subCategory: [ObjectId]
 }, {
     timestamps: true
 });
