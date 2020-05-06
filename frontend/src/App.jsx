@@ -9,6 +9,7 @@ import Login from './containers/user/login/Login';
 import Register from './containers/user/register/Register';
 import AdminProducts from './containers/admin/Admin-Products';
 import Home from './containers/home/home'
+import AllProducts from './containers/admin/All-Products';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path='/login' component={Login} exact />
           <Route path='/register' component={Register} exact />
           <Route path='/admin-products' component={AdminProducts} exact />
+          <Route path='/all-products' component={AllProducts} exact />
           <Route path='/home' component={Home} exact />
         </Switch> 
       </BrowserRouter>

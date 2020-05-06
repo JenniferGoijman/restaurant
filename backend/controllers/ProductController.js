@@ -34,13 +34,13 @@ const ProductController = {
 //                 res.status(500).send(error)
 //             })
 //     },
-//     delete(req, res) {
-//         Product.findByIdAndDelete(req.params.product_id)
-//             .then(product => res.send(product))
-//             .catch(error => {
-//                 console.error(error)
-//                 res.status(500).send(error)
-//             })
-//     }
+    delete(req, res) {
+        Product.findByIdAndDelete(req.params.product_id)
+            .then(product => res.send(product))
+            .catch(error => {
+                console.error(error)
+                res.status(500).send(error)
+            })
+    }
 }
 module.exports = ProductController;

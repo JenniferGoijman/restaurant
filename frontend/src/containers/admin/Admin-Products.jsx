@@ -3,7 +3,7 @@ import { Card, Form, Input, InputNumber, Row, Col, Button, Typography, notificat
 import { connect } from 'react-redux';
 import ModalCategory from './Modal-Category.jsx';
 import { insert } from '../../redux/actions/products';
-import { getAllCategories, insert as insertCategory } from '../../redux/actions/categories';
+import { getAllCategories } from '../../redux/actions/categories';
 
 const layout = { labelCol: {span: 8 }, wrapperCol: { span: 16, } };
 const validateMessages = { required: '${label} es requerido!' };
@@ -30,7 +30,7 @@ const AdminProducts = ({categories}) => {
     //Mostrar categorias en select
     const { Option } = Select;
     function onChange(value) {console.log(setCategory(value));}
-    useEffect(() => { getAllCategories(); console.log("post getAllCategories")}, []);
+    useEffect(() => { getAllCategories(); }, []);
 
     return (
         <Row justify="center">

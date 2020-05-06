@@ -30,6 +30,12 @@ const Header = () => {
                                 Admin Products
                             </NavLink>
                         </Menu.Item>
+                        <Menu.Item  >
+                            <UserOutlined />  
+                            <NavLink to='/all-products' exact>
+                                All Products
+                            </NavLink>
+                        </Menu.Item>
                     </Menu>
                 </Space>
                 </Col>
