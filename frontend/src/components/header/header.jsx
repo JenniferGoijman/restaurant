@@ -7,7 +7,7 @@ import { UserOutlined, UserAddOutlined } from '@ant-design/icons';
 const Header = () => {
     
     return (
-        <header className="homeHeader">
+        <header className="homeHeader animated zoomIn ">
             <Row justify="center">
                 <Col span={5}>
                 <Space>
