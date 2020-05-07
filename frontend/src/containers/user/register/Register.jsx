@@ -46,7 +46,7 @@ const Register = props => {
                         <Form.Item name="username" label="Usuario" rules={[
                             {
                             required: true,
-                            message: 'por favor ingrese su nombre de usuario',
+                            message: 'Ingrese su nombre de usuario',
                             },
                         ]}
                         >
@@ -56,7 +56,7 @@ const Register = props => {
                         <Form.Item name="password" label="Contraseña" rules={[
                             {
                             required: true,
-                            message: 'por favor ingrese su contraseña',
+                            message: 'Ingrese su contraseña',
                             },
                         ]}
                         hasFeedback
@@ -72,7 +72,7 @@ const Register = props => {
                         rules={[
                             {
                             required: true,
-                            message: 'por favor ingrese la confirmacion de la contraseña',
+                            message: 'Ingrese la confirmación de la contraseña',
                             },
                             ({ getFieldValue }) => ({
                             validator(rule, value) {

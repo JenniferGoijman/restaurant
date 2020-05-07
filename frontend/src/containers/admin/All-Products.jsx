@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Card, Row, Col, Table, Typography, Popconfirm, message } from 'antd';
+import { Card, Row, Col, Table, Typography, Popconfirm, message, Button } from 'antd';
 import { getAllProducts, deleteOne } from '../../redux/actions/products';
+import { NavLink } from 'react-router-dom';
 
 const AllProducts = ({products}) => {
     useEffect(() => { getAllProducts(); }, []);
@@ -31,13 +32,21 @@ const AllProducts = ({products}) => {
         message.error('Cancelado');
     }
 
+
     return (
-        <Row justify="center">
+        // <Row justify="center">
             <Col style={{marginTop: 60}}>
                 <Card className=" cardRegister animated bounceInRight">
                     <Row justify="center" style={{ marginBottom: 5}}>
                         <Col>
                             <Title level={2}> Productos </Title>
+                            <Row>
+                                <NavLink to='/admin-products' exact>
+                                    <Button type="primary">
+                                        Nuevo Producto
+                                    </Button>
+                                </NavLink>    
+                            </Row>
                         </Col>
                     </Row>
                     <div>
@@ -45,7 +54,7 @@ const AllProducts = ({products}) => {
                     </div>
                 </Card>
             </Col>
-        </Row>
+        // </Row>
     )
 }
 

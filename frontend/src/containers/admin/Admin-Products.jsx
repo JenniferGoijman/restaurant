@@ -60,7 +60,7 @@ const AdminProducts = ({categories}) => {
                                 filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
                                 {categories?.map(category=><Option value={category._id}>{category.name}</Option>)}
                             </Select>
-                            <Button htmlType="button" style={{ margin: '0 8px' }} 
+                            <Button htmlType="button" style={{ margin: '8px 0' }} 
                                 onClick={() => { setVisible(true); }}> Nueva Categoría </Button>
                         </Form.Item>
                         <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
