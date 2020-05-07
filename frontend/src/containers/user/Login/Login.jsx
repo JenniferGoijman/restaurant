@@ -13,7 +13,7 @@ const Login = props => {
         .then(res => {
             notification.success({ message: 'Login', description: res.data.message ,duration:2000})
              setTimeout(() => {
-                 props.history.push('/home');
+                 props.history.push('/');
              }, 2000);
         })
         .catch(()=>{
