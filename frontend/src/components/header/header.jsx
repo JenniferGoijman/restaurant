@@ -9,7 +9,7 @@ const Header = () => {
     return (
         <header className="homeHeader animated zoomIn ">
             <Row justify="center">
-                <Col span={5}>
+                <Col span={4}>
                 <Space>
                     <Menu className="homeMenu"  mode="horizontal">
                         <Menu.Item >
@@ -22,18 +22,6 @@ const Header = () => {
                             <UserOutlined />  
                             <NavLink to='/register' exact>
                                 Register
-                            </NavLink>
-                        </Menu.Item>
-                        <Menu.Item  >
-                            <UserOutlined />  
-                            <NavLink to='/admin-products' exact>
-                                Admin Products
-                            </NavLink>
-                        </Menu.Item>
-                        <Menu.Item  >
-                            <UserOutlined />  
-                            <NavLink to='/all-products' exact>
-                                All Products
                             </NavLink>
                         </Menu.Item>
                     </Menu>

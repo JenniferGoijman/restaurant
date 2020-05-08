@@ -17,19 +17,32 @@ import UserView from './containers/user/UserView';
 import Sider from './components/sider/Sider'
 
 
+
 function App({user}) {
+
+  let widthColumn;
+
+  if(user.user){
+    widthColumn = 20
+  }else {
+    widthColumn = 24
+  }
+
   return (
     <div className="App">   
       <BrowserRouter>
         <Row>
           {!user.user ? 
-              <Nav/>
+              <Col span={24}>
+                <Nav/>
+              </Col>
+              
           :
               <Col span={4}>
                 <Sider/>
-              </Col>
+              </Col>   
           }
-          <Col span={20}>
+          <Col span={ widthColumn }>
             <Switch>
               <Route path='/login' component={Login} exact />
               <Route path='/register' component={Register} exact />
@@ -39,9 +52,7 @@ function App({user}) {
               <Route path='/userView' component={UserView} exact />
             </Switch>
           </Col>
-          </Row>
-
-        
+        </Row>
       </BrowserRouter>
     </div>
   );
