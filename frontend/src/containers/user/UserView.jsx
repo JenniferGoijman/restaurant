@@ -3,7 +3,9 @@ import { connect } from 'react-redux'
 import { Row, Col, notification, Card, Button } from 'antd';
 
 
+import Sider from '../../components/sider/Sider'
 import { logout}  from '../../redux/actions/users'
+
 
 const UserView = ({user, history} ) => {
     
@@ -22,6 +24,7 @@ const UserView = ({user, history} ) => {
 
     return (
         <div>
+            <Sider/>
             <Row justify="center" align="middle" style={{height: 400}}>
                 <Col span={12}>
                     <Card className="profileContainer animated bounceInRight">
