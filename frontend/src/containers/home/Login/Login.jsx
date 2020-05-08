@@ -12,9 +12,7 @@ const Login = props => {
         login(user)
         .then(res => {
             notification.success({ message: 'Login', description: res.data.message ,duration:2000})
-             setTimeout(() => {
-                 props.history.push('/');
-             }, 2000);
+            props.history.push('/userView'); 
         })
         .catch(()=>{
             notification.error({ message: 'Login', description: 'Hubo un problema al logearte'})
