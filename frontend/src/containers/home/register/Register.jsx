@@ -38,7 +38,7 @@ const Register = props => {
                 <Card className=" cardRegister animated bounceInRight">
                     <Row justify="center" style={{ marginBottom: 5}}>
                         <Col>
-                            <Title level={2}> Formulario de Registro </Title>
+                            <Title level={3}> Formulario de Registro </Title>
                         </Col>
                     </Row>
                     
