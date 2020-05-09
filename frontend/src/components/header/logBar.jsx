@@ -19,7 +19,7 @@ const LogBar = () => {
                     Home
                 </NavLink>
         </Menu.Item>
-        <SubMenu icon={<ShoppingCartOutlined />} title="Products">
+        <SubMenu icon={<ShoppingCartOutlined />} title="Productos">
             <Menu.Item  >
                     <PlusSquareOutlined />
                     <NavLink to='/admin-products' exact>
@@ -32,6 +32,14 @@ const LogBar = () => {
                         All Products
                     </NavLink>
                 </Menu.Item>
+        </SubMenu>
+        <SubMenu icon={<ShoppingCartOutlined />} title="Categorías">
+            <Menu.Item  >
+                <ProfileOutlined />
+                <NavLink to='/all-categories' exact>
+                    Ver Categorías
+                </NavLink>
+            </Menu.Item>
         </SubMenu>
         
       </Menu>

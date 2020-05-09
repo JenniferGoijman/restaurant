@@ -13,6 +13,7 @@ import Register from './containers/user/Register/Register';
 import AdminProducts from './containers/admin/Admin-Products';
 import Home from './containers/home/home'
 import AllProducts from './containers/admin/All-Products';
+import AllCategories from './containers/admin/All-Categories';
 import UserView from './containers/user/UserView';
 import Sider from './components/sider/Sider'
 
@@ -33,6 +34,7 @@ function App({user}) {
               <Route path='/register' component={Register} exact />
               <Route path='/admin-products' component={AdminProducts} exact />
               <Route path='/all-products' component={AllProducts} exact />
+              <Route path='/all-categories' component={AllCategories} exact />
               <Route path='/' component={Home} exact />
               <Route path='/userView' component={UserView} exact />
             </Switch>
