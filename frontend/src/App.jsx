@@ -7,7 +7,7 @@ import 'antd/dist/antd.css';
 import './App.scss';
 
 //IMPORTS COMPONENTS & CONTAINERS
-import Nav from './components/header/header';
+import Header from './components/header/Header';
 import Login from './containers/user/Login/Login';
 import Register from './containers/user/Register/Register';
 import AdminProducts from './containers/admin/Admin-Products';
