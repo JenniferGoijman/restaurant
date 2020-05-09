@@ -1,12 +1,15 @@
 import React from 'react'
 import './Login.scss'
-import { Form, Input, Button, notification, Row, Col } from 'antd';
+import { Form, Input, Button, notification, Row, Col, Card, Typography } from 'antd';
 import { login } from '../../../redux/actions/users';
 
-const layout = { labelCol: { span: 8 }, wrapperCol: { span: 16 } };
+const layout = { labelCol: { span: 6 }, wrapperCol: { span: 16 } };
 const tailLayout = { wrapperCol: { offset: 8, span: 16 } };
 
 const Login = props => {
+
+    const { Title } = Typography;
+
     const onFinish = values => { 
         const user = values;
         login(user)
@@ -25,8 +28,13 @@ const Login = props => {
 
     return (
         <Row justify="center" align="middle" style={{ marginTop: 100, marginBottom: 100 }}>
-            <Col span={8} >
-                <div className="loginContainer animated bounceInRight">
+            <Col span={12} >
+                <Card className="cardLogin animated bounceInRight" style={{padding: 5}}>
+                    <Row justify="center" style={{ marginBottom: 20}}>
+                        <Col>
+                            <Title level={3}> Formulario de Ingreso </Title>
+                        </Col>
+                    </Row>
                     <Form
                         {...layout}
                         name="basic"
@@ -49,7 +57,7 @@ const Login = props => {
                             <Button type="primary" htmlType="submit"> Submit </Button>
                         </Form.Item>
                     </Form>
-                </div>
+                </Card>
             </Col>
         </Row>
         

@@ -7,7 +7,7 @@ import 'antd/dist/antd.css';
 import './App.scss';
 
 //IMPORTS COMPONENTS & CONTAINERS
-import Nav from './components/header/header';
+import Header from './components/header/header';
 import Login from './containers/home/Login/Login';
 import Register from './containers/home/register/Register';
 import AdminProducts from './containers/admin/Admin-Products';
@@ -20,29 +20,14 @@ import Sider from './components/sider/Sider'
 
 function App({user}) {
 
-  let widthColumn;
-
-  if(user.user){
-    widthColumn = 20
-  }else {
-    widthColumn = 24
-  }
-
   return (
     <div className="App">   
       <BrowserRouter>
         <Row>
-          {!user.user ? 
-              <Col span={24}>
-                <Nav/>
-              </Col>
-              
-          :
-              <Col span={4}>
-                <Sider/>
-              </Col>   
-          }
-          <Col span={ widthColumn }>
+          <Col span={24}>
+            <Header/>
+          </Col>  
+          <Col span={24}>
             <Switch>
               <Route path='/login' component={Login} exact />
               <Route path='/register' component={Register} exact />
