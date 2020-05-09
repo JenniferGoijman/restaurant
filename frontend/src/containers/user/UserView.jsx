@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { connect } from 'react-redux'
 import { Row, Col, notification, Card, Button } from 'antd';
 
@@ -6,16 +6,18 @@ import { logout}  from '../../redux/actions/users'
 
 
 const UserView = ({user, history} ) => {
-    
-    if(!user.user){
-        notification.warning({message:'Desconectado',description:'Debe iniciar secion para ingresar a esta seccion'})
-        history.push('/login')
-    }
+
+    useEffect(() => {//componentDidMount() equivalente
+        if(!user.user){
+            notification.error({message:'No esta Autorizado',description:'Debe iniciar sesion para ingresar a esta seccion'})
+            history.push('/login')
+        }
+    }, [])
 
     const disconect = () =>{
         logout()
         .then( res=>{
-            notification.warning({message:'Desconectado',description:'Debe iniciar secion para ingresar a esta seccion'})
+            notification.warning({message:'Desconectado',description:'Se hadesconectado de manera satisfactroria'})
             history.push('/login')
         })
     }
