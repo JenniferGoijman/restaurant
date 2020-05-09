@@ -7,9 +7,8 @@ import { UserOutlined, UserAddOutlined } from '@ant-design/icons';
 const UnlogBar = () => {
     
     return (
-            <Row justify="center">
-                <Col span={4}>
-                <Space>
+            <Row justify="center" style={{borderBottom:" 1px solid #d4d4d4"}}>
+                <Col>
                     <Menu className="homeMenu"  mode="horizontal">
                         <Menu.Item >
                             <UserAddOutlined /> 
@@ -24,7 +23,6 @@ const UnlogBar = () => {
                             </NavLink>
                         </Menu.Item>
                     </Menu>
-                </Space>
                 </Col>
             </Row>
         
