@@ -22,19 +22,18 @@ const ProductController = {
             console.error(error); 
             res.status(500).send(error)})
     },
-//     update(req, res) {
-//         Product.findByIdAndUpdate(req.params.product_id, {
-//                 ...req.body,
-//                 user: req.user._id
-//             }, {
-//                 new: true
-//             })
-//             .then(post => res.send(product))
-//             .catch(error => {
-//                 console.error(error)
-//                 res.status(500).send(error)
-//             })
-//     },
+    update(req, res) {
+        Product.findByIdAndUpdate(req.params.product_id, {
+            ...req.body
+        }, {
+            new: true
+        })
+        .then(product => res.send(product))
+        .catch(error => {
+            console.error(error)
+            res.status(500).send(error)
+        })
+    },
     delete(req, res) {
         Product.findByIdAndDelete(req.params.product_id)
             .then(product => res.send(product))

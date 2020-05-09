@@ -7,7 +7,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 //IMPORTS COMPONENTS & CONTAINERS
 import Nav from './components/header/header';
 import Login from './containers/user/Login/Login';
-import Register from './containers/user/register/Register';
+import Register from './containers/user/Register/Register';
 import AdminProducts from './containers/admin/Admin-Products';
 import Home from './containers/home/home'
 import AllProducts from './containers/admin/All-Products';
