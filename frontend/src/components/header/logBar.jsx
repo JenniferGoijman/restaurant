@@ -23,13 +23,13 @@ const LogBar = () => {
             <Menu.Item  >
                     <PlusSquareOutlined />
                     <NavLink to='/admin-products' exact>
-                        Admin Products
+                        Nuevo Producto
                     </NavLink>
             </Menu.Item>
             <Menu.Item  >
                     <ProfileOutlined />
                     <NavLink to='/all-products' exact>
-                        All Products
+                        Ver Productos
                     </NavLink>
                 </Menu.Item>
         </SubMenu>
