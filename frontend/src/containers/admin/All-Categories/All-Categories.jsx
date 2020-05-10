@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Card, Row, Col, Table, Typography, Popconfirm, message, Button, Space } from 'antd';
-import { getAllCategories, deleteOne } from '../../redux/actions/categories';
+import { getAllCategories, deleteOne } from '../../../redux/actions/categories';
 import { NavLink } from 'react-router-dom';
 
 const AllCategories = ({categories}) => {
@@ -15,12 +15,13 @@ const AllCategories = ({categories}) => {
             render: (record) => (
                 <Space size="middle">
                     <NavLink to={{pathname:'/admin-categories', data:record}} exact>
-                        <a>Editar</a>
+                        Editar
                     </NavLink>
-                    <Popconfirm title="Estás seguro que quieres eliminar la categoría?" 
-                        onConfirm={confirm.bind(this, record._id)} onCancel={cancel} 
-                        okText="Si" cancelText="No">
-                            <a>Eliminar</a>
+                    <Popconfirm title="Estás seguro que quieres eliminar la categoría?" okText="Si" cancelText="No"
+                        onConfirm={confirm.bind(this, record._id)} onCancel={cancel}>
+                        <button  type="button" className="link-button"  onClick={() => this.setState({showSomething: true})}>
+                            Eliminar
+                        </button>
                     </Popconfirm>
                 </Space>),
         },

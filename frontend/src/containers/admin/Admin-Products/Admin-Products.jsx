@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Card, Form, Input, InputNumber, Row, Col, Button, Typography, notification, Select } from 'antd';
 import { connect } from 'react-redux';
-import ModalCategory from './Modal-Category.jsx';
-import { insert, update } from '../../redux/actions/products';
-import { getAllCategories } from '../../redux/actions/categories';
+import ModalCategory from '../Modal-Category/Modal-Category.jsx';
+import { insert, update } from '../../../redux/actions/products';
+import { getAllCategories } from '../../../redux/actions/categories';
 
 const layout = { labelCol: {span: 8 }, wrapperCol: { span: 16, } };
 const validateMessages = { required: '${label} es requerido!' };

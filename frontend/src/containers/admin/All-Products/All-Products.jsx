@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Card, Row, Col, Table, Typography, Popconfirm, message, Button, Space } from 'antd';
-import { getAllProducts, deleteOne } from '../../redux/actions/products';
+import { getAllProducts, deleteOne } from '../../../redux/actions/products';
 import { NavLink } from 'react-router-dom';
+import './All-Products.scss'
 
 const AllProducts = ({products}) => {
     useEffect(() => { getAllProducts(); }, []);
@@ -21,13 +22,15 @@ const AllProducts = ({products}) => {
             render: (record) => (
                 <Space size="middle">
                     <NavLink to={{pathname:'/admin-products', data:record}} exact>
-                        <a>Editar</a>
+                        Editar
                     </NavLink>
-                    <Popconfirm title="Estás seguro que quieres eliminar el producto?" 
-                        onConfirm={confirm.bind(this, record._id)} onCancel={cancel} 
-                        okText="Si" cancelText="No">
-                            <a>Eliminar</a>
+                    <Popconfirm title="Estás seguro que quieres eliminar el producto?" okText="Si" cancelText="No"
+                        onConfirm={confirm.bind(this, record._id)} onCancel={cancel}>
+                        <button  type="button" className="link-button"  onClick={() => this.setState({showSomething: true})}>
+                            Eliminar
+                        </button>
                     </Popconfirm>
+                    
                 </Space>),
         },
       ];

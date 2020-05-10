@@ -10,12 +10,12 @@ import './App.scss';
 import Header from './components/header/Header';
 import Login from './containers/user/Login/Login';
 import Register from './containers/user/Register/Register';
-import AdminProducts from './containers/admin/Admin-Products';
+import AdminProducts from './containers/admin/Admin-Products/Admin-Products';
 import Home from './containers/home/home'
-import AllProducts from './containers/admin/All-Products';
-import AllCategories from './containers/admin/All-Categories';
+import AllProducts from './containers/admin/All-Products/All-Products';
+import AllCategories from './containers/admin/All-Categories/All-Categories';
 import UserView from './containers/user/UserView';
-import Sider from './components/sider/Sider'
+//import Sider from './components/sider/Sider'
 
 
 
