@@ -2,7 +2,7 @@ let backendHost;
 if (window.location.href.includes('localhost')) {
     backendHost = 'http://localhost:3001'
 } else {
-    backendHost = 'https://restaurant-jg.herokuapp.com/'
+    backendHost = 'https://restaurant-jg.herokuapp.com'
 }
 console.log(backendHost)
 export const API_URL = `${backendHost}/`;
