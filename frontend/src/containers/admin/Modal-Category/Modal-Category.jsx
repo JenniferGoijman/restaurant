@@ -1,6 +1,6 @@
 import React from 'react'
 import {Form, Input, Modal, notification} from 'antd';
-import { insert as insertCategory } from '../../redux/actions/categories';
+import { insert as insertCategory } from '../../../redux/actions/categories';
 
 const ModalCategory = ({visible, setVisible, onCancel}) => {
     const [form] = Form.useForm();
@@ -34,21 +34,8 @@ const ModalCategory = ({visible, setVisible, onCancel}) => {
                     console.log('Validate Failed:', info);
                 });
         }}>
-            <Form
-                form={form}
-                layout="vertical"
-                name="form_in_modal"
-                initialValues={{
-                modifier: 'public'
-            }}>
-                <Form.Item
-                    name="name"
-                    label="Nombre"
-                    rules={[{
-                        required: true,
-                        message: 'Ingrese el nombre de la categoria'
-                    }
-                ]}>
+            <Form form={form} layout="vertical" name="form_in_modal" initialValues={{ modifier: 'public' }}>
+                <Form.Item name="name" label="Nombre" rules={[{ required: true, message: 'Ingrese el nombre de la categoria' }]}>
                     <Input/>
                 </Form.Item>
             </Form>

@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Card, Row, Col, Table, Typography, Popconfirm, message, Button } from 'antd';
-import { getAllProducts, deleteOne } from '../../redux/actions/products';
+import { Card, Row, Col, Table, Typography, Popconfirm, message, Button, Space } from 'antd';
+import { getAllProducts, deleteOne } from '../../../redux/actions/products';
 import { NavLink } from 'react-router-dom';
+import './All-Products.scss'
 
 const AllProducts = ({products}) => {
     useEffect(() => { getAllProducts(); }, []);
@@ -18,9 +19,20 @@ const AllProducts = ({products}) => {
         { title: 'Categoria', dataIndex: ['category', 'name'], 
           sorter: (a, b) => a.category.name.localeCompare(b.category.name), sortDirections: ['descend', 'ascend'],},
         { title: 'Action', key: 'action', 
-            render: (record) => (<span><Popconfirm title="Estás seguro que quieres eliminar el producto?"
-                onConfirm={confirm.bind(this, record._id)} onCancel={cancel} okText="Si" cancelText="No">
-                <a>Eliminar</a> </Popconfirm></span>),},
+            render: (record) => (
+                <Space size="middle">
+                    <NavLink to={{pathname:'/admin-products', data:record}} exact>
+                        Editar
+                    </NavLink>
+                    <Popconfirm title="Estás seguro que quieres eliminar el producto?" okText="Si" cancelText="No"
+                        onConfirm={confirm.bind(this, record._id)} onCancel={cancel}>
+                        <button  type="button" className="link-button"  onClick={() => this.setState({showSomething: true})}>
+                            Eliminar
+                        </button>
+                    </Popconfirm>
+                    
+                </Space>),
+        },
       ];
 
     function confirm(e) {
@@ -31,7 +43,6 @@ const AllProducts = ({products}) => {
     function cancel(e) {
         message.error('Cancelado');
     }
-
 
     return (
         // <Row justify="center">

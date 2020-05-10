@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { notification } from 'antd';
+//import { notification } from 'antd';
 
 
 const Home = ({user, history} ) => {  

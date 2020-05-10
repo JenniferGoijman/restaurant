@@ -20,6 +20,26 @@ const CategoryController = {
         .catch(error => { 
             console.error(error); 
             res.status(500).send(error)})
+    },
+    update(req, res) {
+        Category.findByIdAndUpdate(req.params.category_id, {
+            ...req.body
+        }, {
+            new: true
+        })
+        .then(category => res.send(category))
+        .catch(error => {
+            console.error(error)
+            res.status(500).send(error)
+        })
+    },
+    delete(req, res) {
+        Category.findByIdAndDelete(req.params.category_id)
+            .then(category => res.send(category))
+            .catch(error => {
+                console.error(error)
+                res.status(500).send(error)
+            })
     }
 }
 module.exports = CategoryController;

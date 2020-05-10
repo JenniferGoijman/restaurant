@@ -19,6 +19,10 @@ export const insert = async(product) => {
     await axios.post(API_URL + 'products', product);
     return getAllProducts();
 }
+export const update = async(product_id, product) => {
+    await axios.put(API_URL + 'products/' + product_id, product);
+    return getAllProducts();
+}
 export const deleteOne = async(product_id) => {
     await axios.delete(API_URL + 'products/' + product_id);
     return getAllProducts();
