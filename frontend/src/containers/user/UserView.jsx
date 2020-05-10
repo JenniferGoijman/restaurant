@@ -9,7 +9,7 @@ const UserView = ({user, history} ) => {
 
     useEffect(() => {//componentDidMount() equivalente
         if(!user.user){
-            notification.error({message:'No esta Autorizado',description:'Debe iniciar sesion para ingresar a esta seccion'})
+            notification.error({message:'No está autorizado', description:'Debe iniciar sesión para ingresar a esta sección'})
             history.push('/login')
         }
     }, [])
@@ -17,7 +17,7 @@ const UserView = ({user, history} ) => {
     const disconect = () =>{
         logout()
         .then( res=>{
-            notification.warning({message:'Desconectado',description:'Se hadesconectado de manera satisfactroria'})
+            notification.warning({message:'Desconectado',description:'Se ha desconectado de manera satisfactoria'})
             history.push('/login')
         })
     }

@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom';
-import { connect } from 'react-redux'
+import React, { useState } from './node_modules/react'
+import { NavLink } from './node_modules/react-router-dom';
+import { connect } from './node_modules/react-redux'
 
-import { Menu } from 'antd';
-import { AppstoreOutlined, MailOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
+import { Menu } from './node_modules/antd';
+import { AppstoreOutlined, MailOutlined, SettingOutlined, UserOutlined } from './node_modules/@ant-design/icons';
 
 const { SubMenu } = Menu;
 

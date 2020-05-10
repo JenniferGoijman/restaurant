@@ -7,15 +7,15 @@ import 'antd/dist/antd.css';
 import './App.scss';
 
 //IMPORTS COMPONENTS & CONTAINERS
-import Header from './components/header/Header';
-import Login from './containers/user/Login/Login';
-import Register from './containers/user/Register/Register';
-import AdminProducts from './containers/admin/Admin-Products/Admin-Products';
-import Home from './containers/home/home'
-import AllProducts from './containers/admin/All-Products/All-Products';
-import AllCategories from './containers/admin/All-Categories/All-Categories';
-import UserView from './containers/user/UserView';
-//import Sider from './components/sider/Sider'
+import Header from './Components/Header/Header';
+import Login from './Containers/User/Login/Login';
+import Register from './Containers/User/Register/Register';
+import AdminProducts from './Containers/Admin/Admin-Products/Admin-Products';
+import Home from './Containers/Home/Home'
+import AllProducts from './Containers/Admin/All-Products/All-Products';
+import AllCategories from './Containers/Admin/All-Categories/All-Categories';
+import UserView from './Containers/User/UserView';
+//import Sider from './Components/Sider/Sider'
 
 
 
