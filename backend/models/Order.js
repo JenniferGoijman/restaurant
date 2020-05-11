@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const ObjectId = mongoose.SchemaTypes.ObjectId;
 const OrderSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -18,7 +18,13 @@ const OrderSchema = new mongoose.Schema({
         ref: 'Order'
     },
     UserId: ObjectId,
-    Product: [{ ObjectId, quantity }],
+    Product: [{
+        _id: {
+            type: ObjectId,
+            ref: 'Product',
+        },
+        quantity: Number,
+    }],
     numTable: {
         type: Integer,
         required: true
