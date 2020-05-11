@@ -20,6 +20,9 @@ app.use(morgan('dev'))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use('', () => {
+    console.log('peticion recibida a la api');
+})
 app.use('/users', usersRouter)
 app.use('/products', productsRouter)
 app.use('/categories', categoriesRouter)
