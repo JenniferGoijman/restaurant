@@ -19,14 +19,14 @@ const Register = props => {
         }
         register(user)
         .then(res => {
-            notification.success({message:'Register',description:res.data.message})
+            notification.success({message:'Register', description:res.data.message})
             setTimeout(() => {
                 //this.router.navigate([])
                 props.history.push('/login')
             }, 1500);
         })
         .catch((res) =>{
-            notification.error({message:'Register',description:'hubo un problema al registrar el usuario'})
+            notification.error({message:'Register', description:'Hubo un problema al registrar el usuario'})
             console.log(res)
         })
         

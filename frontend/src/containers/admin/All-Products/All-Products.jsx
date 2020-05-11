@@ -26,7 +26,7 @@ const AllProducts = ({products}) => {
                     </NavLink>
                     <Popconfirm title="Estás seguro que quieres eliminar el producto?" okText="Si" cancelText="No"
                         onConfirm={confirm.bind(this, record._id)} onCancel={cancel}>
-                        <button  type="button" className="link-button"  onClick={() => this.setState({showSomething: true})}>
+                        <button  type="button" className="link-button">
                             Eliminar
                         </button>
                     </Popconfirm>
