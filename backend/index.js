@@ -1,6 +1,5 @@
 require('./config/mongoose.js');
 const express = require('express');
-const cors = require('cors');
 const app = express();
 const morgan = require('morgan');
 const PORT = process.env.PORT || 3001;
@@ -12,10 +11,10 @@ const categoriesRouter = require('./routes/categories')
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization, X-API-KEY, Access-Control-Allow-Request-Method");
-    res.header("Access-Control-Allow-Methods", "POST", "GET", "PUT", "OPTIONS", "DELETE");
+    res.header("Access-Control-Allow-Methods", "POST, GET, PUT, OPTIONS, DELETE");
     next();
 });
-//app.use(cors());
+
 app.use(morgan('dev'))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
