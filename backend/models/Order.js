@@ -1,23 +1,14 @@
 const mongoose = require('mongoose');
 const ObjectId = mongoose.SchemaTypes.ObjectId;
 const OrderSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true
+    observations: {
+        type: String
     },
-    description: {
-        type: String,
-        required: true
-    },
-    stock: {
-        type: Integer,
-        required: true
-    },
-    OrderId: {
+    User: {
         type: ObjectId,
-        ref: 'Order'
+        ref: 'User',
+        required: true
     },
-    UserId: ObjectId,
     Product: [{
         _id: {
             type: ObjectId,
@@ -26,7 +17,7 @@ const OrderSchema = new mongoose.Schema({
         quantity: Number,
     }],
     numTable: {
-        type: Integer,
+        type: String,
         required: true
     },
     status: {

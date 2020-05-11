@@ -5,7 +5,17 @@ const {
     jwt_auth_secret
 } = require('../config/keys');
 const UserController = {
-
+    async getAll(req, res) {
+        try {
+            const users = await UserModel.find()
+            res.send({
+                users
+            })
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error)
+        }
+    },
     async register(req, res) {
         try {
             req.body.password = await bcrypt.hash(req.body.password, 9)
