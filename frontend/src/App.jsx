@@ -15,6 +15,7 @@ import Home from './Containers/Home/Home'
 import AllProducts from './Containers/Admin/All-Products/All-Products';
 import AllCategories from './Containers/Admin/All-Categories/All-Categories';
 import UserView from './Containers/User/UserView';
+import Menu from './Containers/Menu/Menu';
 //import Sider from './Components/Sider/Sider'
 
 
@@ -37,6 +38,7 @@ function App({user}) {
               <Route path='/all-categories' component={AllCategories} exact />
               <Route path='/' component={Home} exact />
               <Route path='/userView' component={UserView} exact />
+              <Route path='/menu' component={Menu} exact />
             </Switch>
           </Col>
         </Row>
