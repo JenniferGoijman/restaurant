@@ -8,6 +8,7 @@ const usersRouter = require('./routes/users')
 const productsRouter = require('./routes/products')
 const categoriesRouter = require('./routes/categories')
 const OrdersRouter = require('./routes/orders')
+const OrderProdutcsRouter = require('./routes/orderProduct')
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -24,6 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/users', usersRouter)
 app.use('/products', productsRouter)
 app.use('/categories', categoriesRouter)
-app.use('/order', OrdersRouter)
+app.use('/orders', OrdersRouter)
+app.use('/order_products', OrderProdutcsRouter)
 
 app.listen(PORT, () => console.log('server running on port: ' + PORT));

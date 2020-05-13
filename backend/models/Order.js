@@ -1,21 +1,11 @@
 const mongoose = require('mongoose');
 const ObjectId = mongoose.SchemaTypes.ObjectId;
 const OrderSchema = new mongoose.Schema({
-    observations: {
-        type: String
-    },
-    User: {
+    User_id: {
         type: ObjectId,
         ref: 'User',
         required: true
     },
-    Product: [{
-        _id: {
-            type: ObjectId,
-            ref: 'Product',
-        },
-        quantity: Number,
-    }],
     numTable: {
         type: String,
         required: true
@@ -23,7 +13,8 @@ const OrderSchema = new mongoose.Schema({
     status: {
         type: String,
         required: true
-    }
+    },
+    totalPay: Number
 }, {
     timestamps: true
 });

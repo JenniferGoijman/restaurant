@@ -15,7 +15,6 @@ const OrderController = {
 
     insert(req, res) {
         req.body.status = 'pending';
-        req.body.user = req.user._id
         Order.create(req.body)
             .then(order => res.send(order))
             .catch(error => {
@@ -38,8 +37,8 @@ const OrderController = {
             })
     },
     delete(req, res) {
-        Order.findByIdAndDelete(req.params.id)
-            .then(order => res.send(order))
+        Order.findByIdAndDelete(req.body.id)
+            .then(order => res.send({ order, messaje: 'Order deleted correctly' }))
             .catch(error => {
                 console.error(error)
                 res.status(500).send({
