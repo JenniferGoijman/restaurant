@@ -6,7 +6,6 @@ import { insert, update } from '../../../redux/actions/products';
 import { getAllCategories } from '../../../redux/actions/categories';
 
 const layout = { labelCol: {span: 8 }, wrapperCol: { span: 16, } };
-const validateMessages = { required: '${label} es requerido!' };
 
 const AdminProducts = ({categories, location}) => {
     const { Title } = Typography;
@@ -57,7 +56,7 @@ const AdminProducts = ({categories, location}) => {
                             <Title level={2}> Producto </Title>
                         </Col>
                     </Row>
-                    <Form {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}
+                    <Form {...layout} name="nest-messages" onFinish={onFinish}
                         initialValues={{ product }}>
                         <Form.Item name={['product', 'name']} label="Nombre" rules={[{ required: true }]}>
                             <Input />
