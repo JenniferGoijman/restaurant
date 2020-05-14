@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import './Header.scss'
-import LogBar from './LogBar';
-import UnlogBar from './UnlogBar';
+import './header.scss'
+import LogBar from './logBar';
+import UnlogBar from './unlogBar';
 
 const Header = ({user}) => {
     

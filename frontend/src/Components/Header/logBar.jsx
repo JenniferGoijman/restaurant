@@ -41,6 +41,12 @@ const LogBar = () => {
                 </NavLink>
             </Menu.Item>
         </SubMenu>
+        <Menu.Item key="mail" >
+                <HomeOutlined />
+                <NavLink to='/adminUser' exact>
+                    Gestion de Usuarios
+                </NavLink>
+        </Menu.Item>
         
       </Menu>
               </Col>

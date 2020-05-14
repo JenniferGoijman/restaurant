@@ -7,15 +7,16 @@ import 'antd/dist/antd.css';
 import './App.scss';
 
 //IMPORTS COMPONENTS & CONTAINERS
-import Header from './Components/Header/Header';
+import Header from './Components/Header/header';
 import Login from './Containers/User/Login/Login';
 import Register from './Containers/User/Register/Register';
 import AdminProducts from './Containers/Admin/Admin-Products/Admin-Products';
-import Home from './Containers/Home/Home'
+import Home from './Containers/Home/home'
 import AllProducts from './Containers/Admin/All-Products/All-Products';
 import AllCategories from './Containers/Admin/All-Categories/All-Categories';
 import UserView from './Containers/User/UserView';
 import Menu from './Containers/Menu/Menu';
+import AdminUsers from './Containers/Admin/Admin-Users/AdminUsers';
 //import Sider from './Components/Sider/Sider'
 
 
@@ -39,6 +40,7 @@ function App({user}) {
               <Route path='/' component={Home} exact />
               <Route path='/userView' component={UserView} exact />
               <Route path='/menu' component={Menu} exact />
+              <Route path='/adminUser' component={AdminUsers} exact />
             </Switch>
           </Col>
         </Row>

@@ -2,6 +2,15 @@ import store from '../store';
 import axios from 'axios';
 import { API_URL } from '../../api-config';
 
+export const getAll = async() => {
+    const res = await axios.get(API_URL + 'users/');
+    store.dispatch({
+        type: 'GETALL',
+        payload: res.data.users
+    })
+    return res;
+}
+
 export const register = async(user) => {
     return axios.post(API_URL + 'users/register', user)
 }
