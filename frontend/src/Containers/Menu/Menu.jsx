@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
 import { Card, Row, Col,  Typography } from 'antd';
 import Cart from './Cart';
-import { getAllProducts, addCart } from '../../redux/actions/products'
+import { getAllProducts, addCart } from '../../redux/actions/products';
 
 const Menu = props => {
     console.log(props);

@@ -7,7 +7,7 @@ const Cart  = (props) => {
   const hasProducts = props.cart?.length > 0
   const nodes = hasProducts ? ( 
     props.cart.map(product =>
-      <ProductInCart title={product.name} price={product.price} key={product.id} />
+      <ProductInCart value={product._id} name={product.name} price={product.price} />
     )
   ) : (
     <em>Please add some products to cart.</em>
