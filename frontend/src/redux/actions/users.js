@@ -11,6 +11,15 @@ export const getAll = async() => {
     return res;
 }
 
+export const deleteOne = async(category_id) => {
+    await axios.delete(API_URL + 'users/', {
+        headers: {
+            Authorization: localStorage.getItem('authToken')
+        }
+    });
+    return getAll();
+}
+
 export const register = async(user) => {
     return axios.post(API_URL + 'users/register', user)
 }

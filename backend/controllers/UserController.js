@@ -16,6 +16,28 @@ const UserController = {
             res.status(500).send(error)
         }
     },
+    update(req, res) {
+        try {
+            const user = await UserModel.findByIdAndUpdate(req.body.id, {...req.body }, { new: true })
+            res.send({
+                user
+            })
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error)
+        }
+    },
+    delete(req, res) {
+        try {
+            const user = await UserModel.findByIdAndDelete(req.body.id)
+            res.send({
+                user
+            })
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error)
+        }
+    },
     async register(req, res) {
         try {
             req.body.password = await bcrypt.hash(req.body.password, 9)

@@ -45,8 +45,8 @@ const AllProducts = ({products}) => {
     }
 
     return (
-        // <Row justify="center">
-            <Col style={{marginTop: 60}}>
+         <Row justify="center">
+            <Col span={22} style={{marginTop: 40 }}>
                 <Card className=" cardRegister animated bounceInRight">
                     <Row justify="center" style={{ marginBottom: 5}}>
                         <Col>
@@ -65,7 +65,7 @@ const AllProducts = ({products}) => {
                     </div>
                 </Card>
             </Col>
-        // </Row>
+         </Row>
     )
 }
 
