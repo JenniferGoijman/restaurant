@@ -7,7 +7,7 @@ const Cart  = (props) => {
   const hasProducts = props.cart?.length > 0
   const nodes = hasProducts ? ( 
     props.cart.map(product =>
-      <ProductInCart value={product._id} name={product.name} price={product.price} />
+      <ProductInCart value={product._id} name={product.name} price={product.price} units={product.units} />
     )
   ) : (
     <em>Please add some products to cart.</em>
@@ -18,10 +18,10 @@ const Cart  = (props) => {
       <h3>Pedido</h3>
       <div>{nodes}</div>
       {/* <p>Total: &#36;{total}</p> */}
-      {/* <button onClick={onCheckoutClicked}
-        disabled={hasProducts ? '' : 'disabled'}>
+      <button 
+        visibility={hasProducts ? '' : 'disabled'}>
         Checkout
-      </button> */}
+      </button>
     </div>
   )
 }

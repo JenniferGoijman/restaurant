@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Card, Row, Col,  Typography } from 'antd';
 import Cart from './Cart';
 import { getAllProducts, addCart } from '../../redux/actions/products';
+import './Menu.scss'
 
 const Menu = props => {
     console.log(props);
@@ -23,15 +24,16 @@ const Menu = props => {
                     <div>
                         {props.categories?.map(category=> {
                             return (
-                            <div>
-                                {/* agregar un onClick al boton para agregar a order */}
+                            <div className="menu">
                                 <h3 type="button" value={category._id}>{category.name}</h3>
-                                {props.products?.filter(p=>p.category._id===category._id).map(product=> {
-                                    return (
-                                        <button type="button" onClick={addCart.bind(this, product)} key={product._id}>
-                                            {product.name} €{product.price}</button>
-                                    )
-                                })}
+                                <div className="products">
+                                    {props.products?.filter(p=>p.category._id===category._id).map(product=> {
+                                        return (
+                                            <button type="button" className="product" onClick={addCart.bind(this, product)} 
+                                                key={product._id}>{product.name}</button>
+                                        )
+                                    })}
+                                </div>
                             </div>
                             )
                         })}
