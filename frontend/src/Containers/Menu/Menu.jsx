@@ -1,9 +1,16 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
 import { Card, Row, Col,  Typography } from 'antd';
+import Cart from './Cart';
+import { getAllProducts, addCart } from '../../redux/actions/products';
+import './Menu.scss'
 
 const Menu = props => {
-    console.log(props);
+    useEffect(() => {
+        getAllProducts()
+        .catch(console.error)
+    }, [])
+
     const { Title } = Typography;
 
     return (
@@ -14,16 +21,18 @@ const Menu = props => {
                         <Title level={2}> Menu </Title>
                     </Row>
                     <div>
-                        {props.category.categories?.map(category=> {
+                        {props.categories?.map(category=> {
                             return (
-                            <div>
-                                {/* agregar un onClick al boton para agregar a order */}
+                            <div className="menu">
                                 <h3 type="button" value={category._id}>{category.name}</h3>
-                                {props.product.products?.filter(p=>p.category._id===category._id).map(product=> {
-                                    return (
-                                        <button type="button" value={product._id}>{product.name} €{product.price}</button>
-                                    )
-                                })}
+                                <div className="products">
+                                    {props.products?.filter(p=>p.category._id===category._id).map(product=> {
+                                        return (
+                                            <button type="button" className="product" onClick={addCart.bind(this, product)}>
+                                                {product.name}</button>
+                                        )
+                                    })}
+                                </div>
                             </div>
                             )
                         })}
@@ -31,12 +40,12 @@ const Menu = props => {
                 </Card>
             </Col>
             <Col span={6} style={{marginTop: 60}}>
-                <h1> Pedido </h1>
-                {/* mostrar productos de order*/}
+                <Cart></Cart>
             </Col>
         </Row>
     )
 }
 
-const mapStateToProps = (dataStore) => ({...dataStore});
+const mapStateToProps = ({ category, product }) => ({ 
+    categories:category.categories, products:product.products })
 export default connect(mapStateToProps) (Menu);
