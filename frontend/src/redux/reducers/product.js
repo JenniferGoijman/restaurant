@@ -13,7 +13,6 @@ const productReducer = (state = { cart: [] }, action) => {
                 cart: state.cart? [...state.cart, action.payload] : [action.payload]
             }
         case ADD_CART_UNITS:
-            console.log(action.payload)
             return {
                 ...state,
                 cart: [...state.cart]

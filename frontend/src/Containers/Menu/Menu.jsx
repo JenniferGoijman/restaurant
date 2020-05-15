@@ -6,7 +6,6 @@ import { getAllProducts, addCart } from '../../redux/actions/products';
 import './Menu.scss'
 
 const Menu = props => {
-    console.log(props);
     useEffect(() => {
         getAllProducts()
         .catch(console.error)
@@ -29,8 +28,8 @@ const Menu = props => {
                                 <div className="products">
                                     {props.products?.filter(p=>p.category._id===category._id).map(product=> {
                                         return (
-                                            <button type="button" className="product" onClick={addCart.bind(this, product)} 
-                                                key={product._id}>{product.name}</button>
+                                            <button type="button" className="product" onClick={addCart.bind(this, product)}>
+                                                {product.name}</button>
                                         )
                                     })}
                                 </div>

@@ -4,7 +4,7 @@ import { API_URL } from '../../api-config';
 
 export const getAllOrderProducts = async() => {
     try {
-        const res = await axios.get(API_URL + 'order_products');
+        const res = await axios.get(API_URL + 'orderproducts');
         store.dispatch({
             type: 'GET_ALL_ORDERS_PRODUCTS',
             payload: res.data
@@ -16,6 +16,6 @@ export const getAllOrderProducts = async() => {
 }
 
 export const insert = async(orderproduct) => {
-    await axios.post(API_URL + 'order_products', orderproduct);
-    return getAllProducts();
+    await axios.post(API_URL + 'orderproducts', orderproduct);
+    return getAllOrderProducts();
 }
