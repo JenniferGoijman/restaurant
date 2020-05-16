@@ -17,6 +17,7 @@ import AllCategories from './Containers/Admin/All-Categories/All-Categories';
 import UserView from './Containers/User/UserView';
 import Menu from './Containers/Menu/Menu';
 import AdminUsers from './Containers/Admin/Admin-Users/AdminUsers';
+import UpdateUser from './Containers/Admin/Admin-Users/UpdateUser';
 //import Sider from './Components/Sider/Sider'
 
 function App({user}) {
@@ -39,6 +40,7 @@ function App({user}) {
               <Route path='/userView' component={UserView} exact />
               <Route path='/menu' component={Menu} exact />
               <Route path='/adminUser' component={AdminUsers} exact />
+              <Route path='/updateUser' component={UpdateUser} exact />
             </Switch>
           </Col>
         </Row>

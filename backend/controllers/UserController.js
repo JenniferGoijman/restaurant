@@ -16,7 +16,7 @@ const UserController = {
             res.status(500).send(error)
         }
     },
-    update(req, res) {
+    async update(req, res) {
         try {
             const user = await UserModel.findByIdAndUpdate(req.body.id, {...req.body }, { new: true })
             res.send({
@@ -27,7 +27,7 @@ const UserController = {
             res.status(500).send(error)
         }
     },
-    delete(req, res) {
+    async delete(req, res) {
         try {
             const user = await UserModel.findByIdAndDelete(req.body.id)
             res.send({

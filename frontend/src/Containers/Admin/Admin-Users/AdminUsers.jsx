@@ -20,7 +20,7 @@ const AdminUsers = ({users}) => {
         { title: 'Action', key: 'action', 
             render: (record) => (
                 <Space size="middle">
-                    <NavLink to={{pathname:'', data:record}} exact>
+                    <NavLink to={{pathname:'/updateUser', data:record}} exact>
                         Editar
                     </NavLink>
                     <Popconfirm title="Estás seguro que quieres eliminar el usuario?" okText="Si" cancelText="No"
