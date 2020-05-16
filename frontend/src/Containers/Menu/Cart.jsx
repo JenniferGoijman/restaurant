@@ -4,10 +4,11 @@ import ProductInCart from './ProductInCart';
 import { insert as insertOrders } from '../../redux/actions/orders';
 import { insert as insertOrderProduct} from '../../redux/actions/orderproducts';
 import ModalTable from './Modal-Table.jsx';
-import {Button, message} from 'antd'
+import { Card, Row, Col, Typography, Button, message } from 'antd'
 import { resetCart } from '../../redux/actions/products';
 
 const Cart  = (props) => {
+  const { Title } = Typography;
   const [visible, setVisible] = useState(false);
   const onCreate = values => {
     const numTable = values.number;
@@ -41,13 +42,19 @@ const Cart  = (props) => {
   )
 
   return (
-    <div>
-      <h3>Pedido</h3>
-      <div>{nodes}</div>
-      <Button htmlType="button" style={{ margin: '8px 0' }} visibility={hasProducts ? '' : 'disabled'} 
-        onClick={() => {setVisible(true);} }> Checkout </Button>
-      <ModalTable visible={visible} onCreate={onCreate} onCancel={() => { setVisible(false); }} />
-    </div>
+      <Row justify="center">
+          <Col span={23}>
+              <Card className=" cardRegister animated bounceInRight">
+                  <Row justify="center" style={{ marginBottom: 5}}>
+                      <Title level={2}> Pedido</Title>
+                  </Row>
+                  <div>{nodes}</div>
+                  <Button htmlType="button" style={{ margin: '8px 0' }} visibility={hasProducts ? '' : 'disabled'} 
+                    onClick={() => {setVisible(true);} }> Checkout </Button>
+                  <ModalTable visible={visible} onCreate={onCreate} onCancel={() => { setVisible(false); }} />
+              </Card>
+          </Col>
+      </Row>
   )
 }
 

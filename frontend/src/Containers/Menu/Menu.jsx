@@ -1,7 +1,8 @@
 import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
-import { Card, Row, Col,  Typography } from 'antd';
+import { Card, Row, Col, Typography } from 'antd';
 import Cart from './Cart';
+import Tables from './Tables';
 import { getAllProducts, addCart } from '../../redux/actions/products';
 import { getAllSort } from '../../redux/actions/categoriessort';
 import './Menu.scss'
@@ -9,12 +10,11 @@ import './Menu.scss'
 const Menu = props => {
     useEffect(() => { getAllProducts(); getAllSort();}, [])
     const categoriesSorted = props.categorysort.sort((a, b) => a.index - b.index);
-    console.log(categoriesSorted)
     const { Title } = Typography;
 
     return (
         <Row justify="center">
-            <Col span={18} style={{marginTop: 60}}>
+            <Col span={15} style={{marginTop: 60}}>
                 <Card className=" cardRegister animated bounceInRight">
                     <Row justify="center" style={{ marginBottom: 5}}>
                         <Title level={2}> Menu </Title>
@@ -40,6 +40,7 @@ const Menu = props => {
             </Col>
             <Col span={6} style={{marginTop: 60}}>
                 <Cart></Cart>
+                <Tables></Tables>
             </Col>
         </Row>
     )

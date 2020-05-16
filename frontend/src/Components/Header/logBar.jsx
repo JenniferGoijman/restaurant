@@ -19,7 +19,7 @@ const LogBar = () => {
                     Home
                 </NavLink>
         </Menu.Item>
-        <Menu.Item key="mail" >
+        <Menu.Item key="menu" >
                 <NavLink to='/menu' exact>
                     Menu
                 </NavLink>
@@ -52,9 +52,9 @@ const LogBar = () => {
                     Gestion de Usuarios
                 </NavLink>
         </Menu.Item>
-        <Menu.Item key="mail" >
+        <Menu.Item key="adminmenu" >
                 <HomeOutlined />
-                <NavLink to='/sortable' exact>
+                <NavLink to='/admin-menu' exact>
                     Admin Menu
                 </NavLink>
         </Menu.Item>

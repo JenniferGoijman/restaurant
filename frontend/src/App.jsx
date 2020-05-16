@@ -17,7 +17,7 @@ import AllCategories from './Containers/Admin/All-Categories/All-Categories';
 import UserView from './Containers/User/UserView';
 import Menu from './Containers/Menu/Menu';
 import AdminUsers from './Containers/Admin/Admin-Users/AdminUsers';
-import Sortable from './Containers/Sortable';
+import AdminMenu from './Containers/Admin-Menu';
 
 //import Sider from './Components/Sider/Sider'
 
@@ -41,7 +41,7 @@ function App({user}) {
               <Route path='/userView' component={UserView} exact />
               <Route path='/menu' component={Menu} exact />
               <Route path='/adminUser' component={AdminUsers} exact />
-              <Route path='/sortable' component={Sortable} exact />
+              <Route path='/admin-menu' component={AdminMenu} exact />
             </Switch>
           </Col>
         </Row>
