@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { API_URL } from '../../api-config';
 import store from '../store';
-import { GET_ALL_PRODUCTS, ADD_CART, REMOVE_CART, ADD_CART_UNITS } from '../types';
+import { GET_ALL_PRODUCTS, ADD_CART, REMOVE_CART, ADD_CART_UNITS, RESET_CART } from '../types';
 
 export const getAllProducts = async() => {
     try {
@@ -48,5 +48,10 @@ export const removeCart = (removeProduct) => {
     store.dispatch({
         type: REMOVE_CART,
         payload: removeProduct
+    })
+}
+export const resetCart = () => {
+    store.dispatch({
+        type: RESET_CART
     })
 }

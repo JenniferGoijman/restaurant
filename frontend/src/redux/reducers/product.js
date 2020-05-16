@@ -1,4 +1,4 @@
-import { GET_ALL_PRODUCTS, ADD_CART, REMOVE_CART, ADD_CART_UNITS } from "../types";
+import { GET_ALL_PRODUCTS, ADD_CART, REMOVE_CART, ADD_CART_UNITS, RESET_CART } from "../types";
 
 const productReducer = (state = { cart: [] }, action) => {
     switch (action.type) {
@@ -21,6 +21,11 @@ const productReducer = (state = { cart: [] }, action) => {
             return {
                 ...state,
                 cart: state.cart.filter(p => p._id !== action.payload)
+            }
+        case RESET_CART:
+            return {
+                ...state,
+                cart: []
             }
         default:
             return state

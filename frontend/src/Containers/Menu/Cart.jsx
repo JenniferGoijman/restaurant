@@ -5,6 +5,7 @@ import { insert as insertOrders } from '../../redux/actions/orders';
 import { insert as insertOrderProduct} from '../../redux/actions/orderproducts';
 import ModalTable from './Modal-Table.jsx';
 import {Button, message} from 'antd'
+import { resetCart } from '../../redux/actions/products';
 
 const Cart  = (props) => {
   const [visible, setVisible] = useState(false);
@@ -22,11 +23,11 @@ const Cart  = (props) => {
           insertOrderProduct(orderproducts);
         })
         message.success('Pedido cargado con éxito');
-        // TODO: borrar prosps.cart
     })
     .catch(()=>{
         message.error('No se pudo cargar el pedido');
     })
+    resetCart();
     setVisible(false);
   };
 
@@ -36,14 +37,13 @@ const Cart  = (props) => {
       <ProductInCart value={product._id} name={product.name} price={product.price} units={product.units} />
     )
   ) : (
-    <em>Please add some products to cart.</em>
+    <em>Agregue productos a la comanda.</em>
   )
 
   return (
     <div>
       <h3>Pedido</h3>
       <div>{nodes}</div>
-      {/* <p>Total: &#36;{total}</p> */}
       <Button htmlType="button" style={{ margin: '8px 0' }} visibility={hasProducts ? '' : 'disabled'} 
         onClick={() => {setVisible(true);} }> Checkout </Button>
       <ModalTable visible={visible} onCreate={onCreate} onCancel={() => { setVisible(false); }} />
