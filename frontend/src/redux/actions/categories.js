@@ -9,7 +9,6 @@ export const getAllCategories = async() => {
             type: 'GET_ALL_CATEGORIES',
             payload: res.data
         })
-
         return res;
     } catch (error) {
         console.error(error)

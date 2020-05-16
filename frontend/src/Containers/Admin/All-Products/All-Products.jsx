@@ -17,7 +17,7 @@ const AllProducts = ({products}) => {
         { title: 'Precio', dataIndex: 'price', 
             sorter: (a, b) => a.price - b.price, sortDirections: ['descend', 'ascend'],},
         { title: 'Categoria', dataIndex: ['category', 'name'], 
-          sorter: (a, b) => a.category.name.localeCompare(b.category.name), sortDirections: ['descend', 'ascend'],},
+          sorter: (a, b) => a.category?.name.localeCompare(b.category?.name), sortDirections: ['descend', 'ascend'],},
         { title: 'Action', key: 'action', 
             render: (record) => (
                 <Space size="middle">

@@ -69,9 +69,9 @@ const AdminProducts = ({categories, location}) => {
                         </Form.Item>
                         <Form.Item name={['product', 'category']} label="Categoría" rules={[{ required: false }]}>
                             <Select showSearch style={{ width: 200 }} placeholder="Seleccione una categoria" 
-                                optionFilterProp="children" onChange={onChange} defaultValue={product?.category._id}
+                                optionFilterProp="children" onChange={onChange} defaultValue={product?.category?._id}
                                 filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
-                                {categories?.map(category=><Option value={category._id}>{category.name}</Option>)}
+                                {categories?.map(category=><Option value={category?._id}>{category?.name}</Option>)}
                             </Select>
                             <Button htmlType="button" style={{ margin: '8px 0' }} 
                                 onClick={() => { setVisible(true); }}> Nueva Categoría </Button>

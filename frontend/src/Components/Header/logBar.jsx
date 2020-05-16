@@ -19,6 +19,11 @@ const LogBar = () => {
                     Home
                 </NavLink>
         </Menu.Item>
+        <Menu.Item key="mail" >
+                <NavLink to='/menu' exact>
+                    Menu
+                </NavLink>
+        </Menu.Item>
         <SubMenu icon={<ShoppingCartOutlined />} title="Productos">
             <Menu.Item  >
                     <PlusSquareOutlined />
@@ -47,7 +52,12 @@ const LogBar = () => {
                     Gestion de Usuarios
                 </NavLink>
         </Menu.Item>
-        
+        <Menu.Item key="mail" >
+                <HomeOutlined />
+                <NavLink to='/sortable' exact>
+                    Admin Menu
+                </NavLink>
+        </Menu.Item>
       </Menu>
               </Col>
           </Row>
