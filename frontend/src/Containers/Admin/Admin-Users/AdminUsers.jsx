@@ -1,15 +1,21 @@
-import React, {useEffect} from 'react'
+import React, { useState,useEffect } from 'react'
 import { connect } from 'react-redux'
-import { Row, Col, notification, Card, Table, Typography, Popconfirm, message, Button, Space } from 'antd';
+import { Row, Col, notification, Card, Table, Typography, Popconfirm, message, Button, Space, Form, Input, Select } from 'antd';
 import { NavLink } from 'react-router-dom';
 
-import { getAll}  from '../../../redux/actions/users'
+import { getAll, updateOne, deleteOne}  from '../../../redux/actions/users'
+import './AdminUsers.scss'
 
+const layout = { labelCol: {span: 6 }, wrapperCol: { span: 16, } };
 
 const AdminUsers = ({users}) => {
     
     const { Title } = Typography;
-
+    const [visible, setVisible] = useState(false);
+    const [animationModal, setAnimationModal] = useState();
+    const [updateUser, setUser] = useState();
+    const classModal = `cardModal animated ${animationModal}`
+    const { Option } = Select;
     const columns = [
         { title: 'Usuario', dataIndex: 'username',
             sorter: (a, b) => a.username.localeCompare(b.username), sortDirections: ['descend', 'ascend'],},
@@ -20,9 +26,9 @@ const AdminUsers = ({users}) => {
         { title: 'Action', key: 'action', 
             render: (record) => (
                 <Space size="middle">
-                    <NavLink to={{pathname:'/updateUser', data:record}} exact>
-                        Editar
-                    </NavLink>
+                    <button  type="button" className="link-button" onClick={() => { setUser(record); setVisible(true); setAnimationModal('bounceInUp') }} >
+                            cambiar rol
+                        </button>
                     <Popconfirm title="Estás seguro que quieres eliminar el usuario?" okText="Si" cancelText="No"
                         onConfirm={confirm.bind(this, record._id)} onCancel={cancel}>
                         <button  type="button" className="link-button">
@@ -32,9 +38,28 @@ const AdminUsers = ({users}) => {
                 </Space>),
         },
       ];
+    
+      const onFinish = (values) =>{
+        const user = {
+            id:updateUser?._id,
+            role:values.role
+        }
+        updateOne(user)
+        .then(res => {
+            notification.success({ message: 'Actualizado', description: 'Usuario modificado con éxito', duration:2000})
+            setAnimationModal('bounceOutUp'); 
+            setTimeout(() => {
+                setVisible(false);
+            }, 800); 
+        })
+        .catch(()=>{
+            notification.error({ message: 'Error', description: 'Hubo un problema al intentar modificar el usuario', 
+            duration:2000})
+        })
+    }
+
 
     function confirm(e) {
-        console.log('entrando')
         message.success('Confirmado');
     }
 
@@ -43,10 +68,11 @@ const AdminUsers = ({users}) => {
     }
 
     useEffect(() => { getAll(); }, []);
-    console.log(users)
+
+    
     return (
         <Row justify="center"> 
-            <Col  span={16}>
+            <Col  span={18}>
                 <Card className="animated bounceInRight" style={{ marginTop: 40, borderRadius: 10, backgroundColor: "#cccccc17", boxShadow: "1px 1px 3px #727272"}}>
                     <Title level={2}> Usuarios </Title>
                     <Row justify="center">
@@ -55,6 +81,42 @@ const AdminUsers = ({users}) => {
                         </Col>
                     </Row>
                 </Card>
+            </Col>
+            <Col span={24} className="modalContainer" style={{display: visible ? "block" : "none"}}>
+                <Row justify="center">
+                    <Col span={12} >
+                        <Card className={classModal} style={{ marginTop: 140, borderRadius: 10, boxShadow: "1px 1px 3px #727272"}}>
+                            
+                            <Title level={2}> Cambiar Rol </Title>
+                            <Form {...layout} name="formUpdate" onFinish={onFinish}>
+                                <Row justify="center">
+                                    <Col span={24}>
+                                        <Form.Item name="role" label="Rol de usuario" rules={[{ required: false }]}>
+                                            <Select placeholder={updateUser?.role} defaultValue={updateUser?.role}>
+                                                <Option value="standar">standar</Option>
+                                                <Option value="admin">admin</Option>
+                                            </Select>
+                                        </Form.Item>
+                                    </Col>                           
+                                    <Col justify="center" span={24}>
+                                        <Row justify="space-around">
+                                            <Form.Item >
+                                                <Button type="primary" htmlType="submit">
+                                                    Cambiar
+                                                </Button>
+                                            </Form.Item>
+                                            <Button type="primary" onClick={() => { setAnimationModal('bounceOutUp'); setTimeout(() => {
+                                                setVisible(false);
+                                            }, 800); }} >
+                                                Cancelar
+                                            </Button>
+                                        </Row> 
+                                    </Col>                          
+                                </Row>
+                             </Form> 
+                        </Card>
+                    </Col>
+                </Row>
             </Col>
         </Row>
     )
