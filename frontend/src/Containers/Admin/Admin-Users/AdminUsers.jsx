@@ -46,8 +46,8 @@ const AdminUsers = ({users}) => {
     console.log(users)
     return (
         <Row justify="center"> 
-            <Col span={16}>
-                <Card style={{ marginTop: 20, borderRadius: 5}}>
+            <Col  span={16}>
+                <Card className="animated bounceInRight" style={{ marginTop: 40, borderRadius: 10, backgroundColor: "#cccccc17", boxShadow: "1px 1px 3px #727272"}}>
                     <Title level={2}> Usuarios </Title>
                     <Row justify="center">
                         <Col span={20}>

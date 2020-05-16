@@ -46,8 +46,8 @@ const AllProducts = ({products}) => {
 
     return (
          <Row justify="center">
-            <Col span={22} style={{marginTop: 40 }}>
-                <Card className=" cardRegister animated bounceInRight">
+            <Col span={18} style={{marginTop: 40 }}>
+                <Card className=" cardRegister animated bounceInRight" style={{ marginTop: 30, borderRadius: 10, backgroundColor: "#cccccc17", boxShadow: "1px 1px 3px #727272"}}>
                     <Row justify="center" style={{ marginBottom: 5}}>
                         <Col>
                             <Title level={2}> Productos </Title>
