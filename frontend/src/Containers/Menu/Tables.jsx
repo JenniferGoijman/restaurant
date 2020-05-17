@@ -2,11 +2,22 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getAllOrders } from '../../redux/actions/orders';
 import { Card, Row, Col, Typography, Button, message } from 'antd'
+import { CheckOutlined } from '@ant-design/icons'
+import './Tables.scss'
+import Ticket from './Ticket';
 
 const Tables  = (props) => {
   const { Title } = Typography;
+  const [visible, setVisible] = useState(false);
+  const [orderClosed, setOrderClosed] = useState(false);
+
   useEffect(() => { getAllOrders();}, [])
   console.log(props)
+
+  const closeTable = values => {
+    console.log(values);
+  }
+
 //   const [visible, setVisible] = useState(false);
 //   const onCreate = values => {
 //     const numTable = values.number;
@@ -33,7 +44,8 @@ const Tables  = (props) => {
   const hasOrders = props.order?.length > 0
   const nodes = hasOrders ? ( 
     props.order.map(order =>
-      <div value={order._id}>Mesa {order.numTable} - €{order.totalPay}</div>
+      <div className="table" value={order._id}>Mesa {order.numTable} - €{order.totalPay} 
+        <CheckOutlined className="check" onClick={() => {setVisible(true); setOrderClosed(order);} } /></div>
     )
   ) : (
     <em>Atento! Ya va a llegar el primer comensal!</em>
@@ -47,9 +59,7 @@ const Tables  = (props) => {
                       <Title level={2}> Mesas </Title>
                   </Row>
                   <div>{nodes}</div>
-                  {/* <Button htmlType="button" style={{ margin: '8px 0' }} visibility={hasProducts ? '' : 'disabled'} 
-                    onClick={() => {setVisible(true);} }> Checkout </Button>
-                  <ModalTable visible={visible} onCreate={onCreate} onCancel={() => { setVisible(false); }} /> */}
+                  <Ticket visible={visible} orderClosed={orderClosed} onCancel={() => { setVisible(false); }} />
               </Card>
           </Col>
       </Row>

@@ -29,14 +29,17 @@ export const deleteOne = async(product_id) => {
 }
 export const addCart = (newProduct) => {
     const { product } = store.getState();
-    if (!product.cart?.includes(newProduct)) {
-        newProduct.units=1;
+    console.log(product.cart.filter(c => c.product._id === newProduct._id))
+
+    if (!product.cart.filter(c => c.product._id === newProduct._id).length>0) {
+        const pCart = {product: newProduct, units:1}
         store.dispatch({
             type: ADD_CART,
-            payload: newProduct
+            payload: pCart
         })
     } else {
-        newProduct.units++
+        const pCart = product.cart.filter(p => p.product._id === newProduct._id)[0];
+        pCart.units++
         store.dispatch({
             type: ADD_CART_UNITS,
             payload: newProduct
@@ -45,7 +48,9 @@ export const addCart = (newProduct) => {
 }
 export const removeCart = (removeProductId) => {
     const { product } = store.getState();
-    const removeProduct = product.cart.filter(p => p._id === removeProductId)[0];
+    const removeProduct = product.cart.filter(p => p.product._id === removeProductId)[0];
+    console.log(removeProduct.units)
+    
     removeProduct.units--;
     if (removeProduct.units===0) {
         store.dispatch({

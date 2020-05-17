@@ -2,10 +2,8 @@ const OrderProduct = require('../models/OrderProduct');
 
 const OrderProductController = {
     getAll(req, res) {
-        OrderProduct.find({
-                Order_id: req.body.orderId
-            })
-            .populate('Product')
+        OrderProduct.find()
+            .populate('product')
             .then(async OrderProducts => { res.send(OrderProducts); })
             .catch(error => {
                 console.error(error)

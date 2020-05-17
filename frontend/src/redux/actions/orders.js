@@ -14,7 +14,6 @@ export const getAllOrders = async() => {
         console.error(error)
     }
 }
-
 export const insert = async(order) => {
     await axios.post(API_URL + 'orders', order);
     return getAllOrders();

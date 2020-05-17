@@ -18,6 +18,10 @@ const ProductSchema = new mongoose.Schema({
         type: ObjectId,
         ref: 'Category'
     },
+    ProductId: {
+        type: ObjectId,
+        ref: 'Product'
+    }
 }, {
     timestamps: true
 });
