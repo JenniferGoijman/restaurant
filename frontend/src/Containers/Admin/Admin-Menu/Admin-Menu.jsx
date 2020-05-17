@@ -3,7 +3,7 @@ import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 import arrayMove from 'array-move';
 import { connect } from 'react-redux';
 import { Card, Row, Col, Typography, Button, notification } from 'antd';
-import { getAllSort, update } from '../redux/actions/categoriessort';
+import { getAllSort, update } from '../../../redux/actions/categoriessort';
 import './Admin-Menu.scss'
 
 const AdminMenu = props => {
