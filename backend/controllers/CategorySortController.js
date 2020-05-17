@@ -1,51 +1,46 @@
-const Category = require('../models/Category');
 const CategorySort = require('../models/CategorySort');
 
-const CategoryController = {
+const CategorySortController = {
     getAll(req, res) {
-        Category.find()
-            .then(async categories => { res.send(categories); })
+        CategorySort.find()
+        .populate('category')
+            .then(async categoriesSort => { res.send(categoriesSort); })
             .catch(error => {
                 console.error(error)
                 res.status(500).send(error)
             })
     },
     insert(req, res) {
-        Category.create({
+        CategorySort.create({
             ...req.body
         })
-        .then(category => 
-            CategorySort.create({
-                category: category,
-                index:0
-            }),
-            res.status(201).send({
-                //category,
-                message: 'Categoría creada con éxito',
+        .then(categorySort => res.status(201).send({
+            categorySort,
+            message: 'Orden de la categoría creada con éxito'
         }))
         .catch(error => { 
             console.error(error); 
             res.status(500).send(error)})
     },
     update(req, res) {
-        Category.findByIdAndUpdate(req.params.category_id, {
+        CategorySort.findByIdAndUpdate(req.params.categorySort_id, {
             ...req.body
         }, {
             new: true
         })
-        .then(category => res.send(category))
+        .then(categorySort => res.send(categorySort))
         .catch(error => {
             console.error(error)
             res.status(500).send(error)
         })
     },
     delete(req, res) {
-        Category.findByIdAndDelete(req.params.category_id)
-            .then(category => res.send(category))
+        CategorySort.findByIdAndDelete(req.params.categorySort_id)
+            .then(categorySort => res.send(categorySort))
             .catch(error => {
                 console.error(error)
                 res.status(500).send(error)
             })
     }
 }
-module.exports = CategoryController;
+module.exports = CategorySortController;

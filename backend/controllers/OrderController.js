@@ -12,7 +12,6 @@ const OrderController = {
                 })
             })
     },
-
     insert(req, res) {
         req.body.status = 'pending';
         Order.create(req.body)
@@ -25,16 +24,18 @@ const OrderController = {
             })
     },
     update(req, res) {
-        Order.findByIdAndUpdate(req.params.id, req.body, {
-                new: true
+        Order.findByIdAndUpdate(req.params.order_id, {
+            ...req.body
+        }, {
+            new: true
+        })
+        .then(order => res.send(order))
+        .catch(error => {
+            console.error(error)
+            res.status(500).send({
+                message: 'There was a problem trying updating the order'
             })
-            .then(order => res.send(order))
-            .catch(error => {
-                console.error(error)
-                res.status(500).send({
-                    message: 'There was a problem trying updating the order'
-                })
-            })
+        })
     },
     delete(req, res) {
         Order.findByIdAndDelete(req.body.id)

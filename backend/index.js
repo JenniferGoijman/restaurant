@@ -7,8 +7,9 @@ const PORT = process.env.PORT || 3001;
 const usersRouter = require('./routes/users')
 const productsRouter = require('./routes/products')
 const categoriesRouter = require('./routes/categories')
-const OrdersRouter = require('./routes/orders')
-const OrderProdutcsRouter = require('./routes/orderProduct')
+const categoriesSortRouter = require('./routes/categoriesSort')
+const ordersRouter = require('./routes/orders')
+const orderProductsRouter = require('./routes/orderProduct')
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -25,7 +26,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/users', usersRouter)
 app.use('/products', productsRouter)
 app.use('/categories', categoriesRouter)
-app.use('/orders', OrdersRouter)
-app.use('/orderproducts', OrderProdutcsRouter)
+app.use('/categoriesSort', categoriesSortRouter)
+app.use('/orders', ordersRouter)
+app.use('/orderproducts', orderProductsRouter)
 
 app.listen(PORT, () => console.log('server running on port: ' + PORT));
