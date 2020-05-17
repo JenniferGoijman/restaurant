@@ -18,7 +18,7 @@ const UserController = {
     },
     async update(req, res) {
         try {
-            const user = await UserModel.findByIdAndUpdate(req.body.id, {...req.body }, { new: true })
+            const user = await UserModel.findByIdAndUpdate(req.params._id, {...req.body }, { new: true })
             res.send({
                 user
             })
@@ -29,9 +29,9 @@ const UserController = {
     },
     async delete(req, res) {
         try {
-            const user = await UserModel.findByIdAndDelete(req.body.id)
+            const user = await UserModel.findByIdAndDelete(req.params._id)
             res.send({
-                user
+                message: "usuario eliminado correctamente"
             })
         } catch (error) {
             console.error(error);

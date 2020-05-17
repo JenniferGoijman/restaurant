@@ -41,10 +41,9 @@ const AdminUsers = ({users}) => {
     
       const onFinish = (values) =>{
         const user = {
-            id:updateUser?._id,
             role:values.role
         }
-        updateOne(user)
+        updateOne(updateUser._id, user)
         .then(res => {
             notification.success({ message: 'Actualizado', description: 'Usuario modificado con éxito', duration:2000})
             setAnimationModal('bounceOutUp'); 
@@ -60,7 +59,14 @@ const AdminUsers = ({users}) => {
 
 
     function confirm(e) {
-        message.success('Confirmado');
+        deleteOne(e)
+        .then(res=>{
+            notification.success({ message: 'Eliminado', description: res.message , duration:2000})
+        })
+        .catch(()=>{
+            notification.error({ message: 'Error', description: 'Hubo un problema al intentar modificar el usuario', 
+            duration:2000})
+        })
     }
 
     function cancel(e) {

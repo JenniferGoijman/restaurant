@@ -11,21 +11,17 @@ export const getAll = async() => {
     return res;
 }
 
-export const updateOne = async(user) => {
-    await axios.put(API_URL + 'users/', {
-        headers: {
-            Authorization: localStorage.getItem('authToken')
-        }
-    }, user);
+export const updateOne = async(_id, user) => {
+    await axios.put(API_URL + 'users/' + _id, user);
     return getAll();
 }
 
-export const deleteOne = async(userId) => {
-    await axios.delete(API_URL + 'users/', {
+export const deleteOne = async(_id) => {
+    await axios.delete(API_URL + 'users/' + _id, {
         headers: {
             Authorization: localStorage.getItem('authToken')
         }
-    }, userId);
+    });
     return getAll();
 }
 
