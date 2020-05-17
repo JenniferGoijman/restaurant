@@ -10,6 +10,7 @@ import { resetCart } from '../../redux/actions/products';
 const Cart  = (props) => {
   const { Title } = Typography;
   const [visible, setVisible] = useState(false);
+  
   const onCreate = values => {
     const numTable = values.number;
     const order = props.order.filter(o => o.numTable === numTable)[0];
@@ -19,11 +20,11 @@ const Cart  = (props) => {
       const Order_id = order._id;
       props.cart.map(e => {
         totalPay += e.price*e.units;
-        // const orderproducts = { 
-        //   Order_id: Order_id, Product_id:e._id, observations:'', qtty:e.units, status:"pending" } ;
-        //   // TODO: agregar que el usuario escriba las observaciones del pedido
-        //   console.log(orderproducts)
-        //   insertOrderProduct(orderproducts);
+        const orderproducts = { 
+          Order_id: Order_id, Product_id:e._id, observations:'', qtty:e.units, status:"pending" } ;
+          // TODO: agregar que el usuario escriba las observaciones del pedido
+          console.log(orderproducts)
+          insertOrderProduct(orderproducts);
       })
       order.totalPay = totalPay;
       console.log(Order_id, order)

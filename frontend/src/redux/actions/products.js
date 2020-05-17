@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { API_URL } from '../../api-config';
 import store from '../store';
-import { GET_ALL_PRODUCTS, ADD_CART, REMOVE_CART, ADD_CART_UNITS, RESET_CART } from '../types';
+import { GET_ALL_PRODUCTS, ADD_CART, REMOVE_CART, ADD_CART_UNITS, RESET_CART, SUBSTRACT_CART } from '../types';
 
 export const getAllProducts = async() => {
     try {
@@ -43,12 +43,21 @@ export const addCart = (newProduct) => {
         })
     }
 }
-export const removeCart = (removeProduct) => {
-    console.log(removeProduct)
-    store.dispatch({
+export const removeCart = (removeProductId) => {
+    const { product } = store.getState();
+    const removeProduct = product.cart.filter(p => p._id === removeProductId)[0];
+    removeProduct.units--;
+    if (removeProduct.units===0) {
+        store.dispatch({
         type: REMOVE_CART,
-        payload: removeProduct
-    })
+        payload: removeProductId
+        })
+    } else {
+        store.dispatch({
+            type: SUBSTRACT_CART,
+            payload: removeProductId
+        })
+    }
 }
 export const resetCart = () => {
     store.dispatch({
