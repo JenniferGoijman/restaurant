@@ -2,10 +2,17 @@
     height: auto;
     font-size: 20px;
     margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
+    .details {
+        cursor: pointer;
+    }
+    
     .check{
         cursor: pointer;
-        margin-right: 10px;
+        margin-left: 10px;
         font-size: 20px;
     }
 }

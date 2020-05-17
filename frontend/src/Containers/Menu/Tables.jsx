@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getAllOrders, update } from '../../redux/actions/orders';
 import { Card, Row, Col, Typography, Button, message } from 'antd'
-import { CheckOutlined } from '@ant-design/icons'
+import { CheckOutlined, EditOutlined } from '@ant-design/icons'
 import './Tables.scss'
 import Ticket from './Ticket';
 
@@ -26,8 +26,13 @@ const Tables  = (props) => {
   const hasOrders = props.order?.filter(op => op.status !== "closed").length > 0
   const nodes = hasOrders ? ( 
     props.order.filter(op => op.status !== "closed").map(order =>
-      <div className="table" value={order._id}>Mesa {order.numTable} - €{order.totalPay} 
-        <CheckOutlined className="check" onClick={() => {setVisible(true); setOrderClosed(order);} } /></div>
+      <div className="table"> 
+        <span value={order._id}>Mesa {order.numTable} - €{order.totalPay} </span>
+        <div>
+          <EditOutlined className="details" />
+          <CheckOutlined className="check" onClick={() => {setVisible(true); setOrderClosed(order);} } />
+        </div>
+      </div>
     )
   ) : (
     <em>No hay ningún pedido pendiente.</em>
