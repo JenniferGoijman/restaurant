@@ -13,7 +13,7 @@ const Cart  = (props) => {
   
   const onCreate = values => {
     const numTable = values.number;
-    const order = props.order.filter(o => o.numTable === numTable)[0];
+    const order = props.order.filter(o => o.numTable === numTable && o.status !== "closed")[0];
     
     if (order) {
       let totalPay = order.totalPay;

@@ -7,7 +7,7 @@ import './Ticket.scss'
 const Ticket = props => {
     console.log(props)
     useEffect(() => { getAllOrders(); getAllOrderProducts();}, [])
-    console.log(props.orderproduct)
+    
     return (
         <Modal
             visible={props.visible}
@@ -15,7 +15,8 @@ const Ticket = props => {
             okText="Imprimir"
             cancelText="Cancelar"
             onCancel={props.onCancel}
-            onOk={() => { }}>
+            onOk={() => {props.onCreate()}}
+        >
             <Col justify="center">
                 <header>
                     <h1>RESTAURANTE JG</h1>
