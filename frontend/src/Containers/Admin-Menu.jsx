@@ -8,7 +8,8 @@ import './Admin-Menu.scss'
 
 const AdminMenu = props => {
   useEffect(() => { getAllSort(); }, []);
-  const categoriesSorted = props.categorysort.sort((a, b) => a.index - b.index);
+  console.log(props);
+  const categoriesSorted = props.categorysort?.sort((a, b) => a.index - b.index);
   const [items, setItems] = useState(categoriesSorted);
   const { Title } = Typography;
   
@@ -19,7 +20,7 @@ const AdminMenu = props => {
   const SortableList = SortableContainer(({items}) => {
     return (
       <ul>
-        {items.map((value, index) => (
+        {items?.map((value, index) => (
           <SortableItem key={value._id} index={index} value={value} />
         ))}
       </ul>    

@@ -20,7 +20,7 @@ const ModalCategory = ({visible, setVisible, onCancel}) => {
         <Modal
             visible={visible}
             title="Nueva categoria"
-            okText="Create"
+            okText="Aceptar"
             cancelText="Cancel"
             onCancel={onCancel}
             onOk={() => {

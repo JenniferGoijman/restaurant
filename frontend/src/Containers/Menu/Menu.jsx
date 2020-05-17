@@ -9,7 +9,7 @@ import './Menu.scss'
 
 const Menu = props => {
     useEffect(() => { getAllProducts(); getAllSort();}, [])
-    const categoriesSorted = props.categorysort.sort((a, b) => a.index - b.index);
+    const categoriesSorted = props.categorysort?.sort((a, b) => a.index - b.index);
     const { Title } = Typography;
 
     return (
@@ -20,7 +20,7 @@ const Menu = props => {
                         <Title level={2}> Menu </Title>
                     </Row>
                     <div>
-                        {categoriesSorted.map(category => {
+                        {categoriesSorted?.map(category => {
                             return (
                             <div className="menu">
                                 <h3 type="button" value={category.category._id}>{category.category.name}</h3>

@@ -1,12 +1,13 @@
 import axios from 'axios';
 import { API_URL } from '../../api-config';
 import store from '../store';
+import { GET_ALL_CATEGORIES_SORT } from "../types";
 
 export const getAllSort = async() => {
     try {
         const res = await axios.get(API_URL + 'categoriessort');
         store.dispatch({
-            type: 'GET_ALL_CATEGORIES_SORT',
+            type: GET_ALL_CATEGORIES_SORT,
             payload: res.data
         })
         return res;
