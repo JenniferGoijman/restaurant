@@ -3,13 +3,15 @@ import user from "./user";
 import product from "./product";
 import category from "./category";
 import categorysort from "./categorysort";
-import order from "./orders";
+import order from "./order";
+import orderproduct from "./orderproduct";
 
 const reducer = combineReducers({
     user,
     product,
     category,
     categorysort,
-    order
+    order,
+    orderproduct
 })
 export default reducer;

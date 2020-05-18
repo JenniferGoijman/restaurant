@@ -1,5 +1,5 @@
 import React from 'react';
-import {Form, Input, Modal, notification} from 'antd';
+import {Form, Input, Modal} from 'antd';
 
 const ModalTable = ({visible, onCreate, onCancel}) => {
     const [form] = Form.useForm();

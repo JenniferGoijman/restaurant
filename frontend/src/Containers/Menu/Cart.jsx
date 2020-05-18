@@ -13,15 +13,17 @@ const Cart  = (props) => {
   
   const onCreate = values => {
     const numTable = values.number;
-    const order = props.order.filter(o => o.numTable === numTable)[0];
-    console.log(order)
+    const order = props.order.filter(o => o.numTable === numTable && o.status !== "closed")[0];
+    
     if (order) {
       let totalPay = order.totalPay;
+      console.log(totalPay)
       const Order_id = order._id;
       props.cart.map(e => {
-        totalPay += e.price*e.units;
-        const orderproducts = { 
-          Order_id: Order_id, Product_id:e._id, observations:'', qtty:e.units, status:"pending" } ;
+        totalPay += e.product.price*e.units;
+        console.log(e.product)
+        const orderproducts = {
+          Order_id: Order_id, product:e.product, observations:'', qtty:e.units, status:"pending" } ;
           // TODO: agregar que el usuario escriba las observaciones del pedido
           console.log(orderproducts)
           insertOrderProduct(orderproducts);
@@ -37,13 +39,13 @@ const Cart  = (props) => {
       })
     } else {
       let totalPay = 0;
-      props.cart.map(e => totalPay += e.price*e.units);
-      const order = {User_id: props.user._id, numTable:numTable, status:"pending", totalPay:totalPay};
+      props.cart.map(e => totalPay += e.product.price*e.units);
+      const order = {user: props.user._id, numTable:numTable, status:"pending", totalPay:totalPay};
       insertOrders(order)
       .then(res => {
           props.cart.map(e => {
             const orderproducts = {
-              Order_id:res.data[res.data.length-1]._id, Product_id:e._id, observations:'', qtty:e.units, status:"pending" } ;
+              Order_id:res.data[res.data.length-1]._id, product:e.product, observations:'', qtty:e.units, status:"pending" } ;
               // TODO: agregar que el usuario escriba las observaciones del pedido
             insertOrderProduct(orderproducts);
           })
@@ -59,8 +61,8 @@ const Cart  = (props) => {
 
   const hasProducts = props.cart?.length > 0
   const nodes = hasProducts ? ( 
-    props.cart.map(product =>
-      <ProductInCart value={product._id} name={product.name} price={product.price} units={product.units} />
+    props.cart.map(pCart =>
+      <ProductInCart value={pCart.product._id} name={pCart.product.name} price={pCart.product.price} units={pCart.units} />
     )
   ) : (
     <em>Agregue productos a la comanda.</em>

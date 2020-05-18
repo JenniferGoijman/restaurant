@@ -20,7 +20,7 @@ const productReducer = (state = { cart: [] }, action) => {
         case REMOVE_CART:
             return {
                 ...state,
-                cart: state.cart.filter(p => p._id !== action.payload)
+                cart: state.cart.filter(p => p.product._id !== action.payload)
             }
         case SUBSTRACT_CART:
             return {
