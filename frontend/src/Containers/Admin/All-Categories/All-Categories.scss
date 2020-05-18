@@ -8,4 +8,15 @@
     padding: 0;
     text-decoration: none;
     color: #1890ff;
-  }
+}
+
+.modalContainer {
+    width: 240vh;
+    height: 100vh;
+    background-color: #00000026;
+    position: fixed;
+    top: 40;
+    .cardModal {
+        background-color: #f0f0f0;
+    }
+}

@@ -19,6 +19,16 @@ export const insert = async(category) => {
     await axios.post(API_URL + 'categories', category);
     return getAllCategories();
 }
+
+export const updateOne = async(_id, category) => {
+    await axios.put(API_URL + 'categories/' + _id, category, {
+        headers: {
+            Authorization: localStorage.getItem('authToken')
+        }
+    });
+    return getAllCategories();
+}
+
 export const deleteOne = async(category_id) => {
     await axios.delete(API_URL + 'categories/' + category_id);
     return getAllCategories();

@@ -1,7 +1,6 @@
 import React, { useState,useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Row, Col, notification, Card, Table, Typography, Popconfirm, message, Button, Space, Form, Input, Select } from 'antd';
-import { NavLink } from 'react-router-dom';
 
 import { getAll, updateOne, deleteOne}  from '../../../redux/actions/users'
 import './AdminUsers.scss'

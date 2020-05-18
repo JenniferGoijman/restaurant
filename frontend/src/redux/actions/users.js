@@ -12,7 +12,11 @@ export const getAll = async() => {
 }
 
 export const updateOne = async(_id, user) => {
-    await axios.put(API_URL + 'users/' + _id, user);
+    await axios.put(API_URL + 'users/' + _id, user, {
+        headers: {
+            Authorization: localStorage.getItem('authToken')
+        }
+    });
     return getAll();
 }
 
